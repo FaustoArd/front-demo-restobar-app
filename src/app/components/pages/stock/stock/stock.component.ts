@@ -24,7 +24,7 @@ productStock!:ProductStock;
 
   }
 
-  onUpdateStock(productId:number,productStock:string):void{
+  onCreateStock(productId:number,productStock:string):void{
 
     let productStockNum = Number(productStock);
     if(productStockNum<0){
@@ -32,7 +32,7 @@ productStock!:ProductStock;
     }else{
       this.productStock = new ProductStock();
       this.productStock.productStock = productStockNum;
-      this.productService.updateStock(this.productStock,productId).subscribe({
+      this.productService.createStock(this.productStock,productId).subscribe({
         complete:()=>{
           this.getAllProducts();
         }

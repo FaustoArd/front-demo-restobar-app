@@ -36,6 +36,7 @@ export class TableManagementComponent implements OnInit {
   private  tableClosedData!:any;
  
   paymentMethods:PaymentMethodDto[] = [];
+  
 
 
   constructor(private restoTableService: RestoTableService, private productService: ProductService,
@@ -101,8 +102,7 @@ get paymentMethod(){
 
 onCloseTable() {
  if(this.paymentMethodForm.valid){
-  //var paymentMethod = String (this.paymentMethodForm.controls.paymentMethod.value) ;
-  this.payMethod = new PaymentMethodDto();
+ this.payMethod = new PaymentMethodDto();
   this.payMethod = Object.assign(this.payMethod, this.paymentMethodForm.value)
   var restoTableId = Number(this.storageService.getTableIdAfterTableSelection());
   var workingDayId = Number(this.storageService.getCurrentWorkingDayId());

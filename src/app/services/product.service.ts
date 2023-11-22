@@ -51,7 +51,8 @@ export class ProductService {
     return this.http.delete<string>(`${PRODUCT_BASE_URL}/${id}`,this.httpOptions).pipe(catchError(this.handleError));
   }
 
-  updateStock(productStock:ProductStock,productId:number):Observable<ProductDto>{
+  //this
+  createStock(productStock:ProductStock,productId:number):Observable<ProductDto>{
     return this.http.post<ProductDto>(`${PRODUCT_BASE_URL}/create_stock?productId=${productId}`,productStock,this.httpOptions)
     .pipe(catchError(this.handleError));
 
