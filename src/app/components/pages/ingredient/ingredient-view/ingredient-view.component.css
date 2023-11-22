@@ -1,0 +1,12 @@
+#ingredientAmount{
+   
+    border: solid 1px;
+    border-radius: 0.3rem;
+    border-color: rgb(10, 103, 24);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 6rem;
+    height: 2.0rem;
+    
+}

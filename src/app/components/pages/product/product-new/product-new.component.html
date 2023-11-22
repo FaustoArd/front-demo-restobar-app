@@ -1,0 +1,71 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col-md-4 mt-5">
+            <form [formGroup]="productForm"  class="form-group border border-dark text-center fw-bold">
+                <div class="form-group mt-2">
+                    <label for="product-name" class="form-label fs-7">Nombre</label>
+                    <input class="form-control" type="text" formControlName="productName" id="product-name">
+                    <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="text-danger">
+                    <div *ngIf="productName.errors?.['required']">
+                    Falta el nombre...
+                    </div>
+                   </div>
+                </div>
+                <div class="form-group">
+                    <label for="categoryId" class="form-label fs-7 mt-3">Categoria</label>
+                <select id="categoryId"  formControlName="categoryId" class="form-select border-dark  mt-2">
+                    <option value="">Seleccione una categoria</option>
+                   <option class="form-control" *ngFor="let category of categories" id="categoryId" [value]="category.id">
+                        {{category.categoryName}}</option>
+                        <div *ngIf="categoryId.invalid && (categoryId.dirty || categoryId.touched)" class="text-danger">
+                            <div *ngIf="categoryId.errors?.['required']">
+                           Debes seleccionar una categoria
+                            </div>
+                          
+                           <div  class="mt-1" *ngIf="categoryId.errors?.['errors']">
+                            password must be at least 6 characters long.
+                          </div>
+                        </div>
+                </select>
+            </div>
+                <div class="form-group mt-2">
+                    <label for="product-price" class="form-label fs-7  border-dark">Precio</label>
+                    <input class="form-control " type="number" formControlName="productPrice" id="product-price">
+
+                    <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="text-danger">
+                        <div *ngIf="productName.errors?.['required']">
+                        Deben ser numeros
+                        </div>
+                       </div>
+                </div>
+                <button type="submit" (click)="saveProduct()" class="btn btn-success border border-dark mt-2 mb-2">Guardar</button>
+            </form>
+
+        </div>
+        <div class="col-md-4 mt-5">
+            <table class="table-fluid table-hover table-bordered table-striped border border-dark">
+                <thead>
+                    <tr class="bg-primary opacity-50">
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categories">
+                        <th scope="row" class="fw-bold">{{category.id}}</th>
+                        <th scope="row" class="fw-bold">{{category.categoryName}}</th>
+                        <th>
+                            <button class="btn btn-success btn-sm text-white ms-4 ">Editar</button>
+                            <button class="btn btn-danger btn-sm text-white  ms-4">Eliminar</button>
+                        </th>
+                    </tr>
+                 </tbody>
+            </table>
+        </div>
+    </div>
+</div>

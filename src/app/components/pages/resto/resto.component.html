@@ -1,0 +1,75 @@
+<div class="container-fluid  bg-transparent text-white">
+  <div class="row mt-1">
+    <div class="col ">
+      <a *ngIf="!isDayStarted" class="btn btn-success btn-sm opacity-75 text-white border border-dark"
+        routerLink="/working-day">Inicio de jornada</a>
+      <a *ngIf="isDayStarted" class="btn btn-dark btn-sm opacity-75 text-white border border-dark"
+        routerLink="/working-day">Modificar Inicio de jornada</a>
+    </div>
+    <div class="col">
+    </div>
+    <div id="day" class="col-md-2"></div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-2" *ngFor="let restoTable of restoTables">
+      <div id="tableCard" class="card mt-2 mb-5 border border-dark">
+        <div class="p list-group flush bg-light border border-dark">
+          <p class="card-text fs-6 text-center fst-italic fw-bold" *ngIf="restoTable.open">N° {{restoTable.tableNumber}}
+          </p>
+          <p class="card-text text-center fs-6 text-success fw-bold" *ngIf="restoTable.open">Abierta</p>
+          <p id="empName" class="card- fs-6 text-center fw-bold" *ngIf="restoTable.open">{{restoTable.employeeName}}</p>
+          <p class="card-text text-center fs-7" *ngIf="!restoTable.open">Cerrada</p>
+          <p id="price" class="card-text text-center text-danger fw-bold fs-6" *ngIf="restoTable.open">Total:
+            {{restoTable.totalTablePrice | currency:'$':'symbol' }}</p>
+          <a class="btn btn-dark btn-sm opacity-75 text-white border border-dark"
+            (click)="saveTableIdForTableCreation(restoTable.id);openDialogRestoTableCreation(rTableCreationTemplate)"
+            *ngIf="!restoTable.open">Abrir</a>
+          <a id="manage" routerLink="/table-management" (click)="saveTableIdForOrder(restoTable.id)"
+            class="btn btn-success btn-sm opacity-75 text-white" *ngIf="restoTable.open">Administrar</a>
+          <!-- <a id="open" class="btn btn-danger btn-sm opacity-75 text-white" *ngIf="restoTable.open">Cerrar</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #rTableCreationTemplate>
+  <h1 class="h1 text-center text-white bg-success" mat-dialog-title>Abrir mesa</h1>
+  <div mat-dialog-content class="">
+    <form class="form-group border border-success justify-center mt-3 bg-light" [formGroup]="createRestoTableForm"
+      (ngSubmit)="onOpenTableSubmit();onCreate()">
+      <div>
+        <mat-form-field class="d-block bg-light">
+          <input matInput type="number" class="form-control " formControlName="tableNumber" id="tableNumber"
+            placeholder="Numero de mesa">
+          <div *ngIf="tableNumber.invalid && (tableNumber.dirty || tableNumber.touched)" class="text-danger">
+            <div class="mt-1" *ngIf="tableNumber.errors?.['required']">
+              Numero de mesa invalido
+            </div>
+          </div>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class=" bg-light ">
+          <mat-label class="form-label fs-7">Atendida por</mat-label>
+          <mat-select class="border-primary" [formGroup]="createRestoTableForm" required formControlName="employeeId"
+            id="employeeId">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let employee of employees" [value]="employee.id">
+              {{employee.employeeName}}
+              <div *ngIf="employeeId.invalid && (employeeId.dirty || employeeId.touched)" class="text-danger">
+                <div class="mt-1" *ngIf="employeeId.errors?.['required']">
+                  Empleado invalido
+                </div>
+              </div>
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="createRestoTableForm.hasError('required')">Por favor seleccione el empleado que va a atender
+            la mesa</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button id="btnConfirm" type="submit" class="btn btn-success d-block  btn-block mt-2 ms-5">Confirmar</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,33 @@
+#btnClose{
+   /* background-color: rgb(203, 77, 27);*/
+    background: linear-gradient(245.59deg, red 0%, rgb(233, 83, 8) 28.53%, #d35d0e 75.52%);
+    color: white;
+   
+}
+
+
+#paymentform{
+   border-radius: 1rem;
+    padding: 3rem;
+    color: white;
+}
+
+#select{
+    background: linear-gradient(245.59deg, rgb(23, 62, 107) 0%, rgb(84, 30, 245) 28.53%, #0e81d3 75.52%);
+}
+
+#categoryTable{
+    margin: 5px;
+    padding: 10px 15px 5px;
+    border: solid 1px black;
+
+    height: 300px;
+    width: 400px;
+    overflow: scroll;
+    outline: 1px solid red;
+}
+
+select{
+  width: 170px;
+  border-radius: 0.7rem;
+}

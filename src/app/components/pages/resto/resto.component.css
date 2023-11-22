@@ -1,0 +1,11 @@
+form{
+    padding: 1rem;
+    border:solid green 1px;
+    border-radius: 0.5rem;
+    border-width: 0.1rem;
+}
+#empName{
+    color: rgb(20, 2, 5);
+}
+
+

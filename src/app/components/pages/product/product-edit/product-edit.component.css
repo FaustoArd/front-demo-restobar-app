@@ -1,0 +1,21 @@
+form{
+    background-color: rgb(243, 236, 224);
+}
+
+input{
+   margin-left: 1.5rem;
+    color: #03031c;
+    width: 15rem;
+    border-radius: 1rem;
+}
+select{
+    margin-left: 1.5rem;
+    width: 15rem;
+    color: #060628;
+    border-radius: 1rem;
+}
+option{
+    margin-left: 1.5rem;
+    width: 15rem;
+    color: #07072a;
+}

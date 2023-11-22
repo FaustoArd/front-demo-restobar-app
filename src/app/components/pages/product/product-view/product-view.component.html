@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid mt-4">
+  <a id="new" routerLink="/book-dialog"  class="btn btn-dark btn-md opacity-75 text-white">Nuevo</a>
+    <div class="row">
+      <div class="col-md-2" *ngFor="let product of products">
+        <div class="card mt-3" >
+         <div class="p list-group text-dark fw-bold">
+            <p class="card-text fs-5 text-center text-success fst-italic mt-2">{{product.productName}} </p>
+            <p class="card-text fs-7 text-center mt-4">Categoria: {{product.categoryName}}</p>
+            <div  class="d-inline card-text text-center fs-7">Stock:</div>
+            <div *ngIf="product.productStock>5" class="d-inline card-text text-center text-success fs-6 mb-3">{{product.productStock}}</div>
+            <div *ngIf="product.productStock<5" class="d-inline card-text text-center text-danger fs-6 mb-1">{{product.productStock}}</div>
+            <div *ngIf="product.productStock==null" class="d-inline card-text text-center text-danger fs-6 mb-2 mt-0">Sin stock</div>
+            <p *ngIf="!product.mixed" class=" p-1 card-text text-center fs-7 ">Ingredientes:No</p>
+            <p *ngIf="product.mixed"  class=" p-1 card-text text-center fs-7">Ingredientes:Si</p>
+            <p id="price" class="card-text text-center fst-italic fs-5"> {{product.productPrice | currency:'$':'symbol' }}</p>
+            <a id="modify"  routerLink="/product-edit/{{product.id}}"  class="btn  btn-sm bg-dark opacity-75 text-white">Modificar</a>
+            <a id="delete" routerLink="/"  class="btn btn-sm btn-danger btn-md opacity-75 text-white mt-1">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  

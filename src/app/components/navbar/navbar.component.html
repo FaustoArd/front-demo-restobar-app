@@ -1,0 +1,40 @@
+<div class="container-flex">
+    <mat-toolbar class="bg-dark">
+        <div class="col-md-1">
+            <button class="btn btn-lg text-white"routerLink="/home" >Inicio</button>
+        </div>
+        <div class="col-md-1">
+            <button mat-button [matMenuTriggerFor]="productMenu" class="text-white">Productos</button>
+            <mat-menu #productMenu yPosition="above">
+                <button mat-menu-item routerLink="/product-view">Ver</button>
+                <button mat-menu-item routerLink="/product-new">Nuevo</button>
+                <button mat-menu-item routerLink="/stock">Stock</button>
+                <button mat-menu-item routerLink="/category-view">Precios</button>
+               
+            </mat-menu>
+        </div>
+        <div class="col-md-1">
+            <button mat-button [matMenuTriggerFor]="categoryMenu" class="text-white">Categorias</button>
+            <mat-menu #categoryMenu yPosition="above">
+                <button mat-menu-item routerLink="/category-view">Ver</button>
+                <button mat-menu-item routerLink="/category-new">Nuevo</button>
+                 </mat-menu>
+        </div>
+        <div class="col-md-1">
+            <button mat-button [matMenuTriggerFor]="ingredientsMenu" class="text-white">Ingredientes</button>
+            <mat-menu #ingredientsMenu yPosition="above">
+                <button mat-menu-item routerLink="/ingredient-view">Ver</button>
+                <button mat-menu-item routerLink="/ingredient-new">Modificar</button>
+                 </mat-menu>
+        </div>
+ <div class="col-md-1">
+            <button mat-button [matMenuTriggerFor]="employeeMenu" class="text-white">Empleados</button>
+            <mat-menu #employeeMenu yPosition="above">
+                <button mat-menu-item routerLink="/category-view">Ver</button>
+                <button mat-menu-item routerLink="/category-new">Modificar</button>
+                 </mat-menu>
+        </div>
+       
+       
+    </mat-toolbar>
+</div>

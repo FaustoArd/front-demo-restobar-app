@@ -1,0 +1,148 @@
+<app-navbar></app-navbar>
+<div class="container-fluid  bg-gradient text-dark">
+    <div class="row">
+        <div class="col">
+            <div class="barofcolour mt-3"></div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2 class="h2 ">Mesa N° {{restoTable.tableNumber}}</h2>
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+
+        <div class="row mt-3">
+            <div class="col">
+                <table id="categoryTable" class="table  table-bordered table-striped table-light ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="diplay-7 text-center text-dark">Categoria</th>
+                            <th scope="col" class="diplay-7 text-center text-dark">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let category of categories">
+                            <td class="display-7 fw-bold text-center text-dark">{{category.categoryName}}</td>
+                            <td class="display-7 text-center text-dark"><a class="btn btn-dark"
+                                    (click)="getProductsByCategoryId(category.id)">Seleccionar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="row">
+                            <table   class="table table-bordered table-striped table-light border border-dark">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col" class="diplay-7 text-center text-dark">Producto</th>
+                                        <th scope="col" class="diplay-7 text-center text-dark">Cantidad</th>
+                                        <th scope="col" class="diplay-7 text-center text-dark">precio</th>
+                                        <th scope="col" class="diplay-7 text-center text-dark">Seleccion</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let product of products">
+                                        <td class="fw-bold text-center text-dark">{{product.productName}}</td>
+                                        <td class="text-center text-dark" *ngIf="product.productStock>5">
+                                            {{product.productStock}}</td>
+                                        <td class="text-center text-danger" *ngIf="product.productStock<=5">
+                                            {{product.productStock}}</td>
+                                        <td class="text-center text-dark">{{product.productPrice |
+                                            currency:'$':'symbol'}}</td>
+                                        <td>
+                                            <input class="fs-7 fw-bold text-success" type="number" name="quantity"
+                                                id="quantity" value="{{productQuantity}}" min="1" #productQuantity
+                                                placeholder="0">
+                                            <a class="btn btn-dark"
+                                                (click)="createNewOrder(product.id,productQuantity.value)">Agregar</a>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row"></div>
+
+                </div>
+            </div>
+            <div class="col">
+                <div class="container">
+                    <table id="table" class="table table-bordered table-striped table-light border border-dark">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="display-7 text-center text-dark">Producto</th>
+                                <th scope="col" class="display-7 text-center text-dark ">Cantidad</th>
+                                <th scope="col" class="display-7 text-center text-dark ">Total</th>
+                                <th scope="col" class="display-7 text-center text-dark">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of orders">
+                                <td class="display-7 text-center text-dark">{{order.productName}}</td>
+                                <td class="display-7 text-center text-dark">{{order.productQuantity}}</td>
+                                <td class="display-7 text-center text-dark">{{order.totalOrderPrice |
+                                    currency:'$':'symbol'}}</td>
+                                <td class="display-7 text-center text-dark"><a class="btn btn-dark"
+                                        (click)="deleteOrderById(order.id)">Eliminar</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="row mt-5"></div>
+
+<div class="container ">
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col">
+            <form [formGroup]="paymentMethodForm">
+            <div class="form-group">
+                <label for="paymentMethod" class="form-label fs-7 mt-3">Categoria</label>
+            <select id="paymentMethod"  formControlName="paymentMethod" class="form-select border-dark  mt-2">
+                <option value="">Metodo de pago</option>
+               <option class="form-control" *ngFor="let paymentMethod of paymentMethods" id="paymentMethod" [value]="paymentMethod.paymentMethod">
+                    {{paymentMethod.paymentMethod}}</option>
+                    <div *ngIf="paymentMethod.invalid && (paymentMethod.dirty || paymentMethod.touched)" class="text-danger">
+                        <div *ngIf="paymentMethod.errors?.['required']">
+                       Debes seleccionar una categoria
+                        </div>
+                      
+                       <div  class="mt-1" *ngIf="paymentMethod.errors?.['errors']">
+                        password must be at least 6 characters long.
+                      </div>
+                    </div>
+            </select>
+            <button type="submit" (click)="onCloseTable()" class="btn btn-lg btn-danger border border-dark mt-2 mb-2 text-center ms-3 mt-4">Cerrar</button>
+        </div>
+    </form>
+        </div>
+        <div class="col"></div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <button class="btn btn-white border fs-4 border-dark h3 text-danger ms-5">
+                {{restoTable.totalTablePrice | currency:'$':'symbol'}}</button>
+        </div>
+    </div>
+
+</div>
