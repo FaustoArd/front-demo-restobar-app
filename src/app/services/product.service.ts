@@ -22,9 +22,11 @@ export class ProductService {
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('Error', error.error);
-      return throwError(() => Error('Error en el servidor, intente nuevamente en unos segundos'));
-    } 
-    return throwError(() => new Error('Algo fallo, intente nuevamente en unos segundos'));
+      return throwError(() => Error(error.error));
+    } else if(error.status===400){
+      return throwError(()=> 'No tienes suficiente cantidad de ingredientes');
+    }
+    return throwError(() => new Error(error.error));
   }
 
   getProductsByCategoryId(id:number):Observable<ProductDto[]>{
@@ -37,6 +39,10 @@ export class ProductService {
 
   getAllProducts():Observable<ProductDto[]>{
     return this.http.get<ProductDto[]>(`${PRODUCT_BASE_URL}/all`,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  getAllProductsByProductNameAsc():Observable<ProductDto[]>{
+    return this.http.get<ProductDto[]>(`${PRODUCT_BASE_URL}/all_asc`,this.httpOptions).pipe(catchError(this.handleError));
   }
 
   saveProduct(product:ProductDto):Observable<ProductDto>{

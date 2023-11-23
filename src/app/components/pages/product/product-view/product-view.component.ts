@@ -20,7 +20,19 @@ export class ProductViewComponent implements OnInit {
 
 
   ngOnInit(): void {
-      this.getAllProducts();
+      this.getAllProductsByNameAsc();
+  }
+
+  getAllProductsByNameAsc(){
+    this.productService.getAllProductsByProductNameAsc().subscribe({
+      next:(productsData)=>{
+      this.products = productsData;
+      },
+      error:(errorData)=>{
+        this.errorData = errorData;
+        this.onSnackBarMessage(this.errorData);
+      }
+    });
   }
 
 getAllProducts(){

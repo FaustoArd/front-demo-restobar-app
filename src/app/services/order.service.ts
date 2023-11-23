@@ -24,7 +24,7 @@ export class OrderService {
       return throwError(() => new Error(error.error))
      // console.error('Backend retorno el codigo de estado', error.status, error.error)
     }else if(error.status===417){
-      return throwError(() => new Error(error.error))
+      return throwError(()=> 'No Hay suficiente stock!');
     }else if(error.status===400){
       return throwError(() => new Error(error.error))
     }

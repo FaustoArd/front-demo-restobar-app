@@ -27,7 +27,7 @@ export class ProductEditComponent implements OnInit {
   ngOnInit(): void {
     this.getProductbyId()
     this.getAllCategories();
-    this.getAllProducts();
+    this.getAllProductsByNameAsc();
    
   }
 
@@ -111,8 +111,8 @@ export class ProductEditComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe(cats => this.categories = cats);
   }
 
-  getAllProducts():void{
-    this.productServive.getAllProducts().subscribe({
+  getAllProductsByNameAsc():void{
+    this.productServive.getAllProductsByProductNameAsc().subscribe({
       next:(productsData)=>{
         this.products = productsData;
       },
@@ -122,4 +122,6 @@ export class ProductEditComponent implements OnInit {
       }
     })
   }
+
+  
 }

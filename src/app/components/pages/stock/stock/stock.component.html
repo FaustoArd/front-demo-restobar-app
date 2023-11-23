@@ -20,8 +20,8 @@
                         <td *ngIf="product.productStock<=5" class="fw-bold text-danger fs-5">{{product.productStock}}</td>
                         <td *ngIf="product.productStock>5" class="fw-bold text-success fs-5" >{{product.productStock}}</td>
                         <td >
-                            <input class="fs-6 fw-bold" type="number" name="productStock" id="productStock" value="{{product.productStock}}" min="1"
-                              #productStock placeholder={{product.productStock}}>
+                            <input class="fs-6 fw-bold" type="number" name="productStock" id="productStock" min="1"
+                              #productStock >
                             <button class="btn btn-sm btn-success ms-3"
                               (click)=" onCreateStock(product.id,productStock.value)">Aplicar</button>
                           </td>

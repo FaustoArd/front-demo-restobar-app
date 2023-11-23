@@ -14,13 +14,14 @@ export class StockComponent implements OnInit {
 product!:ProductDto;
 products:ProductDto[]= [];
 productStock!:ProductStock;
+errorData!:string;
 
   constructor(private productService:ProductService,private snackBar:MatSnackBar){}
 
 
 
   ngOnInit(): void {
-      this.getAllProducts();
+      this.getAllProductsByProductNameAsc();
 
   }
 
@@ -28,23 +29,29 @@ productStock!:ProductStock;
 
     let productStockNum = Number(productStock);
     if(productStockNum<0){
-      this.onSnackBarMessage("No puedes poner cantidad 0");
+      this.onSnackBarMessage("No puedes poner cantidad negativa");
     }else{
       this.productStock = new ProductStock();
       this.productStock.productStock = productStockNum;
       this.productService.createStock(this.productStock,productId).subscribe({
+        error:(errorData)=>{
+          this.errorData = errorData;
+          this.onSnackBarMessage(this.errorData);
+        },
         complete:()=>{
-          this.getAllProducts();
+          this.getAllProductsByProductNameAsc();
         }
       })
     }
+
+
 
   
 
   }
 
-  getAllProducts():void{
-      this.productService.getAllProducts().subscribe(prods => this.products = prods);
+  getAllProductsByProductNameAsc():void{
+      this.productService.getAllProductsByProductNameAsc().subscribe(prods => this.products = prods);
   }
  onSnackBarMessage(message: any) {
     this.snackBar.open(message, 'Cerrar', {

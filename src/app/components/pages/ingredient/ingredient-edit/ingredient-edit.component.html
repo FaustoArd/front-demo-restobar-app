@@ -1,1 +1,30 @@
-<p>ingredient-edit works!</p>
+<app-navbar></app-navbar>
+<div class="container mt-5">
+<div class="row">
+<div class="col">
+    <table id="categoryTable" class="table table-md table-bordered table-striped table-light ">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="diplay-7 text-center text-dark">Nombre</th>
+                <th scope="col" class="diplay-7 text-center text-dark">Categoria</th>
+                <th scope="col" class="diplay-7 text-center text-dark">Cantidad</th>
+                <th scope="col" class="diplay-7 text-center text-dark">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ingredient of ingredients">
+                <td class="display-7 fw-bold text-center text-dark">{{ingredient.ingredientName}}</td>
+                <td class="display-7 fw-bold text-center text-dark">{{ingredient.categoryName}}</td>
+                <td class="display-7 fw-bold text-center text-dark">{{ingredient.ingredientAmount}}</td>
+                <td >
+                    <input class="fs-6 fw-bold" type="number" name="ingredientAmount" id="ingredientAmount" value="{{ingredient.ingredientAmount}}" min="1"
+                      #ingredientAmount placeholder={{ingredient.ingredientAmount}}>
+                    <button class="btn btn-sm btn-success ms-3"
+                      (click)=" onUpdateAmount(ingredient.id,ingredientAmount.value)">Aplicar</button>
+                  </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>

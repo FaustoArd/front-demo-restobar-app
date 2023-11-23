@@ -54,17 +54,17 @@
                                 <tbody>
                                     <tr *ngFor="let product of products">
                                         <td class="fw-bold text-center text-dark">{{product.productName}}</td>
-                                        <td class="text-center text-dark" *ngIf="product.productStock>5">
+                                        <td class=" fw-bold text-center text-dark" *ngIf="product.productStock>5">
                                             {{product.productStock}}</td>
-                                        <td class="text-center text-danger" *ngIf="product.productStock<=5">
+                                        <td class=" fw-bold text-center text-danger" *ngIf="product.productStock<=5">
                                             {{product.productStock}}</td>
-                                        <td class="text-center text-dark">{{product.productPrice |
+                                        <td class=" fw-bold text-center text-dark">{{product.productPrice |
                                             currency:'$':'symbol'}}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <input class="fs-7 fw-bold text-success" type="number" name="quantity"
                                                 id="quantity" value="{{productQuantity}}" min="1" #productQuantity
                                                 placeholder="0">
-                                            <a class="btn btn-dark"
+                                            <a class="btn btn-dark mt-2 text-center"
                                                 (click)="createNewOrder(product.id,productQuantity.value)">Agregar</a>
                                         </td>
 
@@ -90,9 +90,9 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let order of orders">
-                                <td class="display-7 text-center text-dark">{{order.productName}}</td>
-                                <td class="display-7 text-center text-dark">{{order.productQuantity}}</td>
-                                <td class="display-7 text-center text-dark">{{order.totalOrderPrice |
+                                <td class=" fw-bold display-7 text-center text-dark">{{order.productName}}</td>
+                                <td class=" fw-bold display-7 text-center text-dark">{{order.productQuantity}}</td>
+                                <td class=" fw-bold display-7 text-center text-dark">{{order.totalOrderPrice |
                                     currency:'$':'symbol'}}</td>
                                 <td class="display-7 text-center text-dark"><a class="btn btn-dark"
                                         (click)="deleteOrderById(order.id)">Eliminar</a></td>

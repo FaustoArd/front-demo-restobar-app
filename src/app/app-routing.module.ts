@@ -12,6 +12,7 @@ import { ProductEditComponent } from './components/pages/product/product-edit/pr
 import { StockComponent } from './components/pages/stock/stock/stock.component';
 import { IngredientViewComponent } from './components/pages/ingredient/ingredient-view/ingredient-view.component';
 import { IngredientNewComponent } from './components/pages/ingredient/ingredient-new/ingredient-new.component';
+import { IngredientModifyComponent } from './components/pages/ingredient/ingredient-modify/ingredient-modify.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path:'stock',component:StockComponent},
   { path:'ingredient-view', component:IngredientViewComponent},
   { path:'ingredient-new',component:IngredientNewComponent},
-  { path:'ingredient-edit/:id',component:IngredientViewComponent}
+  { path:'ingredient-edit',component:IngredientViewComponent},
+  { path:'ingredient-modify/:id',component:IngredientModifyComponent}
 ];
 
 @NgModule({

@@ -49,6 +49,10 @@ export class IngredientService {
     return this.http.get<CategoryDto[]>(`${INGREDIENT_BASE_URL}/all_categories`,this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  updateIngredient(ingredient:IngredientDto):Observable<IngredientDto>{
+    return this.http.put<IngredientDto>(`${INGREDIENT_BASE_URL}/`,ingredient,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
   
 
 

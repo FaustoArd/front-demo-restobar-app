@@ -44,10 +44,7 @@ ngOnInit(): void {
     this.getIngredientCategories();
 }
 
-
-
-
-  saveIngredient() {
+ saveIngredient() {
     if(this.ingredientFormBuilder.valid){
       console.log(this.ingredientFormBuilder.value)
       this.ingredient = new IngredientDto();

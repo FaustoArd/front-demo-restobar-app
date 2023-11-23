@@ -7,5 +7,7 @@ export class IngredientDto{
 	ingredientAmount!:number;
 	
 	categoryName!:string;
+
+	categoryId!:number;
 	
 }
