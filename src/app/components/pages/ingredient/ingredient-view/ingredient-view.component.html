@@ -1,31 +1,24 @@
 <app-navbar></app-navbar>
-<div class="container mt-5">
-<div class="row">
-<div class="col">
-    <table id="categoryTable" class="table table-md table-bordered table-striped table-light ">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" class="diplay-7 text-center text-dark">Nombre</th>
-                <th scope="col" class="diplay-7 text-center text-dark">Categoria</th>
-                <th scope="col" class="diplay-7 text-center text-dark">Cantidad</th>
-                <th scope="col" class="diplay-7 text-center text-dark">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let ingredient of ingredients">
-                <td class="display-7 fw-bold text-center text-dark">{{ingredient.ingredientName}}</td>
-                <td class="display-7 fw-bold text-center text-dark">{{ingredient.categoryName}}</td>
-                <td class="display-7 fw-bold text-center text-dark">{{ingredient.ingredientAmount}}</td>
-                <td >
-                    <input class="fs-6 fw-bold" type="number" name="ingredientAmount" id="ingredientAmount" value="{{ingredient.ingredientAmount}}" min="1"
-                      #ingredientAmount placeholder={{ingredient.ingredientAmount}}>
-                    <button class="btn btn-sm btn-success ms-3"
-                      (click)=" onUpdateAmount(ingredient.id,ingredientAmount.value)">Aplicar</button>
-                  </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</div>
-</div>
 
+<div class="container-fluid mt-4">
+  <a id="new" routerLink="/book-dialog"  class="btn btn-dark btn-md opacity-75 text-white">Nuevo</a>
+    <div class="row">
+      <div class="col-md-2" *ngFor="let ingredients of ingredients">
+        <div class="card mt-3" >
+         <div class="p list-group text-dark fw-bold">
+            <p class="card-text fs-5 text-center text-success fst-italic mt-2">{{ingredients.ingredientName}} </p>
+            <p class="card-text fs-7 text-center mt-4">Categoria: {{ingredients.categoryName}}</p>
+            <div  class="d-inline card-text text-center fs-7">Stock:</div>
+            <div *ngIf="ingredients.ingredientName" class="d-inline card-text text-center text-success fs-6 mb-3">{{ingredients.ingredientAmount}}</div>
+            <div *ngIf="ingredients.ingredientAmount<500" class="d-inline card-text text-center text-danger fs-6 mb-1">{{ingredients.ingredientAmount}}</div>
+            <div *ngIf="ingredients.ingredientAmount==null" class="d-inline card-text text-center text-danger fs-6 mb-2 mt-0">Sin stock</div>
+          
+           
+            <a id="modify"  routerLink="/product-edit/{{ingredients.id}}"  class="btn  btn-sm bg-dark opacity-75 text-white">Modificar</a>
+            <a id="delete" routerLink="/"  class="btn btn-sm btn-danger btn-md opacity-75 text-white mt-1">Eliminar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  
