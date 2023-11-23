@@ -31,6 +31,7 @@ import { ProductNewComponent } from './components/pages/product/product-new/prod
 import { ProductEditComponent } from './components/pages/product/product-edit/product-edit.component';
 import { StockComponent } from './components/pages/stock/stock/stock.component';
 import { IngredientViewComponent } from './components/pages/ingredient/ingredient-view/ingredient-view.component';
+import { IngredientNewComponent } from './components/pages/ingredient/ingredient-new/ingredient-new.component';
 
 
 
@@ -53,6 +54,7 @@ import { IngredientViewComponent } from './components/pages/ingredient/ingredien
     ProductEditComponent,
     StockComponent,
     IngredientViewComponent,
+    IngredientNewComponent,
     
     
   ],

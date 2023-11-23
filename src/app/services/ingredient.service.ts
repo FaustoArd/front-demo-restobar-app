@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { IngredientDto } from '../models/ingredientDto';
+import { CategoryService } from './category.service';
+import { CategoryDto } from '../models/categoryDto';
 
 const INGREDIENT_BASE_URL = 'http://localhost:8080/api/v1/arbam/ingredients';
 
@@ -38,5 +40,17 @@ export class IngredientService {
   getIngredientById(id:number):Observable<IngredientDto>{
     return this.http.get<IngredientDto>(`${INGREDIENT_BASE_URL}/${id}`,this.httpOptions).pipe(catchError(this.handleError));
   }
+
+  saveIngredient(ingredient:IngredientDto):Observable<IngredientDto>{
+    return this.http.post<IngredientDto>(`${INGREDIENT_BASE_URL}/`,ingredient,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  getAllIngredientCategories():Observable<CategoryDto[]>{
+    return this.http.get<CategoryDto[]>(`${INGREDIENT_BASE_URL}/all_categories`,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  
+
+
 
 }

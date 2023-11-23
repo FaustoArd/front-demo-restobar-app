@@ -5,7 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryService } from 'src/app/services/category.service';
 import { CategoryDto } from 'src/app/models/categoryDto';
 import { ProductDto } from 'src/app/models/productDto';
-import { ObjectAssigner } from 'src/app/models/objectAssigner';
+
 
 @Component({
   selector: 'app-product-new',

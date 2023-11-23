@@ -11,6 +11,7 @@ import { ProductNewComponent } from './components/pages/product/product-new/prod
 import { ProductEditComponent } from './components/pages/product/product-edit/product-edit.component';
 import { StockComponent } from './components/pages/stock/stock/stock.component';
 import { IngredientViewComponent } from './components/pages/ingredient/ingredient-view/ingredient-view.component';
+import { IngredientNewComponent } from './components/pages/ingredient/ingredient-new/ingredient-new.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,7 +25,9 @@ const routes: Routes = [
   { path:'product-new', component:ProductNewComponent},
   { path:'product-edit/:id', component:ProductEditComponent},
   { path:'stock',component:StockComponent},
-  { path:'ingredient-view', component:IngredientViewComponent}
+  { path:'ingredient-view', component:IngredientViewComponent},
+  { path:'ingredient-new',component:IngredientNewComponent},
+  { path:'ingredient-edit/:id',component:IngredientViewComponent}
 ];
 
 @NgModule({

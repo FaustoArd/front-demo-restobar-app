@@ -2,7 +2,48 @@
 <div class="container">
     <div class="row">
         <div class="col">
-
+            <div class="col-md-4 mt-5">
+                <form [formGroup]="productForm"  class="form-group border border-dark text-center fw-bold">
+                    <div class="form-group mt-2">
+                        <label for="product-name" class="form-label fs-7">Nombre</label>
+                        <input class="form-control" type="text" formControlName="productName" id="product-name">
+                        <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="text-danger">
+                        <div *ngIf="productName.errors?.['required']">
+                        Falta el nombre...
+                        </div>
+                       </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryId" class="form-label fs-7 mt-3">Categoria</label>
+                    <select id="categoryId"  formControlName="categoryId" class="form-select border-dark  mt-2">
+                        <option value="">Seleccione una categoria</option>
+                       <option class="form-control" *ngFor="let category of categories" id="categoryId" [value]="category.id">
+                            {{category.categoryName}}</option>
+                            <div *ngIf="categoryId.invalid && (categoryId.dirty || categoryId.touched)" class="text-danger">
+                                <div *ngIf="categoryId.errors?.['required']">
+                               Debes seleccionar una categoria
+                                </div>
+                              
+                               <div  class="mt-1" *ngIf="categoryId.errors?.['errors']">
+                                password must be at least 6 characters long.
+                              </div>
+                            </div>
+                    </select>
+                </div>
+                    <div class="form-group mt-2">
+                        <label for="product-price" class="form-label fs-7  border-dark">Precio</label>
+                        <input class="form-control " type="number" formControlName="productPrice" id="product-price">
+    
+                        <div *ngIf="productName.invalid && (productName.dirty || productName.touched)" class="text-danger">
+                            <div *ngIf="productName.errors?.['required']">
+                            Deben ser numeros
+                            </div>
+                           </div>
+                    </div>
+                    <button type="submit" (click)="saveProduct()" class="btn btn-success border border-dark mt-2 mb-2">Guardar</button>
+                </form>
+    
+            </div>
         </div>
         <div class="col-md-4 mt-5">
             <form [formGroup]="productForm"  class="form-group border border-dark text-center fw-bold">

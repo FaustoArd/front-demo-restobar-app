@@ -23,8 +23,10 @@
         <div class="col-md-1">
             <button mat-button [matMenuTriggerFor]="ingredientsMenu" class="text-white">Ingredientes</button>
             <mat-menu #ingredientsMenu yPosition="above">
+                <button mat-menu-item routerLink="/ingredient-new">Nuevo</button>
                 <button mat-menu-item routerLink="/ingredient-view">Ver</button>
-                <button mat-menu-item routerLink="/ingredient-new">Modificar</button>
+                <button mat-menu-item routerLink="/ingredient-view">Modificar cantidad</button>
+              
                  </mat-menu>
         </div>
  <div class="col-md-1">

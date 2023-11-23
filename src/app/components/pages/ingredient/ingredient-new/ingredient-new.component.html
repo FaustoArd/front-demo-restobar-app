@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col-md-4 mt-5">
+            <form [formGroup]="ingredientFormBuilder"  class="form-group border border-dark text-center fw-bold">
+                <div class="form-group mt-2">
+                    <label for="ingredient-name" class="form-label fs-7">Nombre</label>
+                    <input class="form-control" type="text" formControlName="ingredientName" id="ingredient-name">
+                    <div *ngIf="ingredientName.invalid && (ingredientName.dirty || ingredientName.touched)" class="text-danger">
+                    <div *ngIf="ingredientName.errors?.['required']">
+                    Falta el nombre...
+                    </div>
+                   </div>
+                </div>
+                <div class="form-group">
+                    <label for="categoryId" class="form-label fs-7 mt-3">Categoria</label>
+                <select id="categoryId"  formControlName="categoryId" class="form-select border-dark  mt-2">
+                    <option value="">Seleccione una categoria</option>
+                   <option class="form-control" *ngFor="let category of ingredientsCategory" id="categoryId" [value]="category.id">
+                        {{category.categoryName}}</option>
+                        <div *ngIf="categoryId.invalid && (categoryId.dirty || categoryId.touched)" class="text-danger">
+                            <div *ngIf="categoryId.errors?.['required']">
+                           Debes seleccionar una categoria
+                            </div>
+                          
+                           <div  class="mt-1" *ngIf="categoryId.errors?.['errors']">
+                            password must be at least 6 characters long.
+                          </div>
+                        </div>
+                </select>
+            </div>
+                <div class="form-group mt-2">
+                    <label for="ingredient-amount" class="form-label fs-7  border-dark">Cantidad</label>
+                    <input class="form-control " type="number" formControlName="ingredientAmount" id="ingredient-amount">
+
+                    <div *ngIf="ingredientAmount.invalid && (ingredientAmount.dirty || ingredientAmount.touched)" class="text-danger">
+                        <div *ngIf="ingredientAmount.errors?.['required']">
+                        Deben ser numeros
+                        </div>
+                       </div>
+                </div>
+                <button type="submit" (click)="saveIngredient()" class="btn btn-success border border-dark mt-2 mb-2">Guardar</button>
+            </form>
+
+        </div>
+        <div class="col-md-4 mt-5">
+          
+        </div>
+    </div>
+</div>

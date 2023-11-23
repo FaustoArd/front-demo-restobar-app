@@ -25,12 +25,10 @@ export class IngredientViewComponent implements OnInit  {
 
   }
 
-  updateIngredient(id:number){
-
-  }
   onUpdateAmount(id:number,ingredientAmount:string){
 
   }
+ 
 
 
 
