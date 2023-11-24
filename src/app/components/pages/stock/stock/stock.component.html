@@ -23,7 +23,9 @@
                             <input class="fs-6 fw-bold" type="number" name="productStock" id="productStock" min="1"
                               #productStock >
                             <button class="btn btn-sm btn-success ms-3"
-                              (click)=" onCreateStock(product.id,productStock.value)">Aplicar</button>
+                              (click)=" onCreateStock(product.id,productStock.value)">Aumentar</button>
+                              <button class="btn btn-sm btn-danger ms-3"
+                              (click)=" onReduceStock(product.id,productStock.value)">Reducir</button>
                           </td>
                     </tr>
 

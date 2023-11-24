@@ -24,7 +24,7 @@ export class ProductService {
       console.error('Error', error.error);
       return throwError(() => Error(error.error));
     } else if(error.status===400){
-      return throwError(()=> 'No tienes suficiente cantidad de ingredientes');
+      return throwError(()=> Error(error.error));
     }
     return throwError(() => new Error(error.error));
   }
@@ -62,6 +62,11 @@ export class ProductService {
     return this.http.post<ProductDto>(`${PRODUCT_BASE_URL}/create_stock?productId=${productId}`,productStock,this.httpOptions)
     .pipe(catchError(this.handleError));
 
+  }
+
+  reduceStock(productStock:ProductStock,productId:number):Observable<string>{
+    return this.http.put<string>(`${PRODUCT_BASE_URL}/reduce_stock?productId=${productId}`,productStock,this.httpOptions)
+    .pipe(catchError(this.handleError));
   }
  
 }
