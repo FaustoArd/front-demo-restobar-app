@@ -34,6 +34,7 @@ import { IngredientViewComponent } from './components/pages/ingredient/ingredien
 import { IngredientNewComponent } from './components/pages/ingredient/ingredient-new/ingredient-new.component';
 import { IngredientEditComponent } from './components/pages/ingredient/ingredient-edit/ingredient-edit.component';
 import { IngredientModifyComponent } from './components/pages/ingredient/ingredient-modify/ingredient-modify.component';
+import { IngredientMixComponent } from './components/pages/ingredient-mix/ingredient-mix.component';
 
 
 
@@ -59,6 +60,7 @@ import { IngredientModifyComponent } from './components/pages/ingredient/ingredi
     IngredientNewComponent,
     IngredientEditComponent,
     IngredientModifyComponent,
+    IngredientMixComponent,
     
     
   ],

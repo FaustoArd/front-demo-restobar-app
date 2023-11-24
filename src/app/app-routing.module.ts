@@ -13,6 +13,7 @@ import { StockComponent } from './components/pages/stock/stock/stock.component';
 import { IngredientViewComponent } from './components/pages/ingredient/ingredient-view/ingredient-view.component';
 import { IngredientNewComponent } from './components/pages/ingredient/ingredient-new/ingredient-new.component';
 import { IngredientModifyComponent } from './components/pages/ingredient/ingredient-modify/ingredient-modify.component';
+import { IngredientMixComponent } from './components/pages/ingredient-mix/ingredient-mix.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,16 +21,17 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path:'table-management', component:TableManagementComponent },
   { path:'working-day', component:WorkingDayComponent },
-  { path:'category-view', component:CategoryViewComponent},
-  { path:'category-new',component:CategoryNewComponent},
-  {path: 'product-view', component:ProductViewComponent},
-  { path:'product-new', component:ProductNewComponent},
-  { path:'product-edit/:id', component:ProductEditComponent},
-  { path:'stock',component:StockComponent},
-  { path:'ingredient-view', component:IngredientViewComponent},
-  { path:'ingredient-new',component:IngredientNewComponent},
-  { path:'ingredient-edit',component:IngredientViewComponent},
-  { path:'ingredient-modify/:id',component:IngredientModifyComponent}
+  { path:'category-view', component:CategoryViewComponent },
+  { path:'category-new',component:CategoryNewComponent },
+  { path: 'product-view', component:ProductViewComponent },
+  { path:'product-new', component:ProductNewComponent },
+  { path:'product-edit/:id', component:ProductEditComponent },
+  { path:'stock',component:StockComponent },
+  { path:'ingredient-view', component:IngredientViewComponent },
+  { path:'ingredient-new',component:IngredientNewComponent },
+  { path:'ingredient-edit',component:IngredientViewComponent },
+  { path:'ingredient-modify/:id',component:IngredientModifyComponent },
+  { path:'ingredient-mix', component:IngredientMixComponent }
 ];
 
 @NgModule({

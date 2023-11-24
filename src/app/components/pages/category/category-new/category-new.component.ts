@@ -1,5 +1,5 @@
-import { Component ,OnInit} from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryDto } from 'src/app/models/categoryDto';
 import { CategoryService } from 'src/app/services/category.service';
@@ -8,51 +8,75 @@ import { CategoryService } from 'src/app/services/category.service';
   templateUrl: './category-new.component.html',
   styleUrls: ['./category-new.component.css']
 })
-export class CategoryNewComponent implements OnInit{
-
- 
+export class CategoryNewComponent implements OnInit {
 
 
-  categories:CategoryDto[]  = [];
-  category:CategoryDto | undefined;
-  newCategory:CategoryDto | undefined;
-  constructor(private categoryService:CategoryService,private snackBar:MatSnackBar){}
-  
+
+
+  categories: CategoryDto[] = [];
+  category: CategoryDto | undefined;
+  newCategory: CategoryDto | undefined;
+  constructor(private categoryService: CategoryService, private snackBar: MatSnackBar) { }
+
 
   ngOnInit(): void {
-    
+
   }
 
   categoryForm = new FormGroup({
     id: new FormControl(''),
-    categoryName: new FormControl(''),
+    categoryName: new FormControl('', Validators.required),
   });
 
- 
-
-  onSubmit(){
-   this.onCreateCategory();
+  get categoryName(){
+    return this.categoryForm.controls.categoryName;
   }
 
-  updateCategory(){
+
+
+  onSubmit() {
+    this.onCreateCategory();
+  }
+
+  updateCategory() {
     this.categoryForm.patchValue({
       //id:'2',
-      categoryName:'Pollo'
+      categoryName: 'Pollo'
 
     })
   }
-  
- onCreateCategory(){
-   // var id = this.categoryForm.getRawValue().id;
-    var categoryName = this.categoryForm.getRawValue().categoryName;
-    this.category = new CategoryDto();
-   // this.category.id = Number(this.categoryForm.getRawValue().id);
-    this.category.categoryName = String (this.categoryForm.getRawValue().categoryName);
-   this.categoryService.saveCategory(this.category).subscribe({
-      next:(catData)=>{
-        this.newCategory = catData;
-        console.log(this.newCategory.categoryName)
-      }
-    });
+
+  onCreateCategory() {
+    if (this.categoryForm.valid) {
+      // var id = this.categoryForm.getRawValue().id;
+      var categoryName = this.categoryForm.getRawValue().categoryName;
+      this.category = new CategoryDto();
+      // this.category.id = Number(this.categoryForm.getRawValue().id);
+      this.category.categoryName = String(this.categoryForm.getRawValue().categoryName);
+      this.categoryService.saveCategory(this.category).subscribe({
+        next: (catData) => {
+          this.newCategory = catData;
+          console.log(this.newCategory.categoryName)
+        },
+        complete:()=>{
+          this.onSnackBarMessage("Categoria guardada.");
+          this.categoryForm.reset();
+        }
+      });
+    }else{
+      this.onSnackBarMessage("Debes ingresar una categoria")
+      this.categoryForm.markAllAsTouched();
+    }
   }
+  onSnackBarMessage(message:any){
+    this.snackBar.open(message, 'Cerrar', {
+         duration: 3000,
+         verticalPosition: 'top',
+         horizontalPosition: 'center',
+         
+       });
+
+ 
+
+      }
 }

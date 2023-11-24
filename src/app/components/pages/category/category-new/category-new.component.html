@@ -7,6 +7,11 @@
                <div class="form-group"></div>
                 <label for="categoryName" class="d-block fs-6 fw-bold">Nombre </label>
                 <input id="categoryName" type="text" formControlName="categoryName">
+                <div *ngIf="categoryName.invalid && (categoryName.dirty || categoryName.touched)" class="text-danger">
+                    <div *ngIf="categoryName.errors?.['required']">
+                    Debes agregar una categoria
+                    </div>
+                   </div>
 
 
                 <button type="submit" class="btn  btn-sm btn-success mt-2">Guardar</button>

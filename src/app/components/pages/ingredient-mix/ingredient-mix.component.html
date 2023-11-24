@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="container-flex mt-5">
+    <div class="row">
+        <div class="col md-2">
+            <table class="table table-sm table-bordered border border-primary table-striped table-hover text-center ms-3">
+                <thead >
+                    <tr >
+                        <th scope="col " class="text-dark fs-6">Producto</th>
+                       
+                       
+                        <th scope="col"  class="text-dark fs-6">Seleccion</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                       
+                        <td class="fw-bold fs-6">{{product.productName}}</td>
+                <td><button class="btn btn-success bg-transparent text-dark " (click)="getallIngredientMixesByProductId(product.id)">Seleccionar</button></td>
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col md-2">
+            <table class="table table-sm table-bordered border border-success table-striped table-hover text-center ms-3">
+                <thead >
+                    <tr >
+                        <th scope="col " class="text-dark fs-6">Ingrediente</th>
+                       
+                        <th scope="col"  class="text-dark fs-6">Seleccion</th>
+                     
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ingredient of ingredients">
+                       <td class="fw-bold fs-7">{{ingredient.ingredientName}}</td>
+                    <td><button class="btn btn-success bg-transparent text-dark " (click)="onProductSelect()">Seleccionar</button></td>
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col md-2">
+            <table class="table table-sm table-bordered border border-danger table-striped table-hover text-center ms-3">
+                <thead >
+                    <tr >
+                        <th scope="col " class="text-dark fs-6">Receta</th>
+                    
+                        <th scope="col"  class="text-dark fs-6">Seleccion</th>
+                     
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ingredientMix of ingredientMixes">
+                       <td scope="row" class="fw-bold fs-5">{{ingredientMix.ingredientName}}</td>
+                    <td><button class="btn btn-success bg-transparent text-dark " (click)="onProductSelect()">Seleccionar</button></td>
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">hola</div>
+       
+    </div>
+    
+</div>
