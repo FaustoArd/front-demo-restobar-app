@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ingredientMixDto } from '../models/ingredientMixDto';
+import { IngredientMixDto } from '../models/ingredientMixDto';
 
 const INGREDIENT_MIX_BASE_URL = 'http://localhost:8080/api/v1/arbam/ingredient_mixes';
 
@@ -33,14 +33,14 @@ export class IngredientMixService {
   
 
 
-  getMixesByProductId(productId:number):Observable<ingredientMixDto[]>{
+  getMixesByProductId(productId:number):Observable<IngredientMixDto[]>{
 
-    return this.http.get<ingredientMixDto[]>(`${INGREDIENT_MIX_BASE_URL}/all_by_product_id?productId=${productId}`,this.httpOptions)
+    return this.http.get<IngredientMixDto[]>(`${INGREDIENT_MIX_BASE_URL}/all_by_product_id?productId=${productId}`,this.httpOptions)
     .pipe(catchError(this.handleError));
 
   }
-  createMix(ingredientMix:ingredientMixDto,productId:number):Observable<ingredientMixDto>{
-    return this.http.post<ingredientMixDto>(`${INGREDIENT_MIX_BASE_URL}/`,ingredientMix,this.httpOptions)
+  createMix(ingredientMix:IngredientMixDto,productId:number):Observable<IngredientMixDto>{
+    return this.http.post<IngredientMixDto>(`${INGREDIENT_MIX_BASE_URL}/?productId=${productId}`,ingredientMix,this.httpOptions)
     .pipe(catchError(this.handleError));
   }
 

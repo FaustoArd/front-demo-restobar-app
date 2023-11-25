@@ -1,14 +1,23 @@
 <app-navbar></app-navbar>
-<div class="container-flex mt-5">
-    <div class="row">
-        <div class="col md-2">
+<div class="container-lg mt-3">
+    <div  class="row row ">
+        <div  class="col-md-4 text-center mt-0">
+            <h3 *ngIf="!productSelected" class="fw-bold text-danger fs-5" >Ningun producto seleccionado</h3>
+            <button *ngIf="productSelected" class="btn btn-danger bg-danger text-white fw-bold mt-2"
+        (click)="onProductUnselect()">En seleccion: {{productSelectedName}}</button> 
+        </div>
+    </div>
+    <div class="row mt-0">
+        
+        <div class="col md-2 mt-0">
+            <h2 class="h2 text-center fw-bold">Productos</h2>
             <table class="table table-sm table-bordered border border-primary table-striped table-hover text-center ms-3">
                 <thead >
                     <tr >
                         <th scope="col " class="text-dark fs-6">Producto</th>
                        
                        
-                        <th scope="col"  class="text-dark fs-6">Seleccion</th>
+                        <th *ngIf="!productSelected" scope="col"  class="text-dark fs-6">Seleccion</th>
                       
                     </tr>
                 </thead>
@@ -16,20 +25,24 @@
                     <tr *ngFor="let product of products">
                        
                         <td class="fw-bold fs-6">{{product.productName}}</td>
-                <td><button class="btn btn-success bg-transparent text-dark " (click)="getallIngredientMixesByProductId(product.id)">Seleccionar</button></td>
-                       
+                <td *ngIf="!productSelected"><button  class="btn btn-success bg-transparent text-dark fw-bold "
+                     (click)="onProductSelect(product.id)">Seleccionar</button></td>
+                  
+                    
+                  
                     </tr>
 
                 </tbody>
             </table>
         </div>
         <div class="col md-2">
+            <h2 class="h2 text-center fw-bold">Ingredientes</h2>
             <table class="table table-sm table-bordered border border-success table-striped table-hover text-center ms-3">
                 <thead >
                     <tr >
                         <th scope="col " class="text-dark fs-6">Ingrediente</th>
                        
-                        <th scope="col"  class="text-dark fs-6">Seleccion</th>
+                        <th  scope="col"  class="text-dark fs-6">Seleccion</th>
                      
                       
                     </tr>
@@ -37,7 +50,7 @@
                 <tbody>
                     <tr *ngFor="let ingredient of ingredients">
                        <td class="fw-bold fs-7">{{ingredient.ingredientName}}</td>
-                    <td><button class="btn btn-success bg-transparent text-dark " (click)="onProductSelect()">Seleccionar</button></td>
+                    <td><button *ngIf="productSelected" class="btn btn-success bg-transparent text-dark " (click)="saveIngredientMix(ingredient.id)">Seleccionar</button></td>
                        
                     </tr>
 
@@ -45,12 +58,13 @@
             </table>
         </div>
         <div class="col md-2">
+            <h2 class="h2 text-center fw-bold">Receta</h2>
             <table class="table table-sm table-bordered border border-danger table-striped table-hover text-center ms-3">
                 <thead >
                     <tr >
                         <th scope="col " class="text-dark fs-6">Receta</th>
                     
-                        <th scope="col"  class="text-dark fs-6">Seleccion</th>
+                       
                      
                       
                     </tr>
@@ -58,14 +72,14 @@
                 <tbody>
                     <tr *ngFor="let ingredientMix of ingredientMixes">
                        <td scope="row" class="fw-bold fs-5">{{ingredientMix.ingredientName}}</td>
-                    <td><button class="btn btn-success bg-transparent text-dark " (click)="onProductSelect()">Seleccionar</button></td>
+                    
                        
                     </tr>
 
                 </tbody>
             </table>
         </div>
-        <div class="col-md-4">hola</div>
+       
        
     </div>
     

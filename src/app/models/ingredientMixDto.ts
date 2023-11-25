@@ -1,4 +1,4 @@
-export class ingredientMixDto{
+export class IngredientMixDto{
     id!:number;
 	
 	productId!:number;
