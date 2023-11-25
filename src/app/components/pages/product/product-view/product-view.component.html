@@ -12,8 +12,9 @@
             <div *ngIf="product.productStock>5" class="d-inline card-text text-center text-success fs-6 mb-3">{{product.productStock}}</div>
             <div *ngIf="product.productStock<5" class="d-inline card-text text-center text-danger fs-6 mb-1">{{product.productStock}}</div>
             <div *ngIf="product.productStock==null" class="d-inline card-text text-center text-danger fs-6 mb-2 mt-0">Sin stock</div>
-            <p *ngIf="!product.mixed" class=" p-1 card-text text-center fs-7 ">Ingredientes:No</p>
-            <p *ngIf="product.mixed"  class=" p-1 card-text text-center fs-7">Ingredientes:Si</p>
+            <div class=" p-1 card-text text-center fs-7 mt-1 ">Ingredientes</div>
+            <div *ngIf="!product.mixed"  class=" p-1 card-text text-center text-dark fs-7 mb-1">No</div>
+            <div *ngIf="product.mixed"  class=" p-1 card-text text-center text-warning fs-5 mb-1">Si</div>
             <p id="price" class="card-text text-center fst-italic fs-5"> {{product.productPrice | currency:'$':'symbol' }}</p>
             <a id="modify"  routerLink="/product-edit/{{product.id}}"  class="btn  btn-sm bg-dark opacity-75 text-white">Modificar</a>
             <a id="delete" routerLink="/"  class="btn btn-sm btn-danger btn-md opacity-75 text-white mt-1">Eliminar</a>

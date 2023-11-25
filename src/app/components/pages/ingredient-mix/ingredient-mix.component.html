@@ -2,7 +2,7 @@
 <div class="container-lg mt-3">
     <div  class="row row ">
         <div  class="col-md-4 text-center mt-0">
-            <h3 *ngIf="!productSelected" class="fw-bold text-danger fs-5" >Ningun producto seleccionado</h3>
+            <button *ngIf="!productSelected" class="btn btn-danger bg-transparent text-dark fw-bold mt-2" >Ningun producto seleccionado</button>
             <button *ngIf="productSelected" class="btn btn-danger bg-danger text-white fw-bold mt-2"
         (click)="onProductUnselect()">En seleccion: {{productSelectedName}}</button> 
         </div>
@@ -42,27 +42,35 @@
                     <tr >
                         <th scope="col " class="text-dark fs-6">Ingrediente</th>
                        
-                        <th  scope="col"  class="text-dark fs-6">Seleccion</th>
+                        <th *ngIf="productSelected"  scope="col"  class="text-dark fs-6">Seleccion</th>
                      
                       
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let ingredient of ingredients">
+                    <tr   *ngFor="let ingredient of ingredients">
                        <td class="fw-bold fs-7">{{ingredient.ingredientName}}</td>
-                    <td><button *ngIf="productSelected" class="btn btn-success bg-transparent text-dark " (click)="saveIngredientMix(ingredient.id)">Seleccionar</button></td>
-                       
+                    <td *ngIf="productSelected" >
+                        <input class="fs-6 fw-bold" type="number" name="ingredientAmount" id="ingredientAmount" min="1"
+                          #ingredientAmount >
+                        <button class="btn btn-sm btn-success ms-3"
+                          (click)=" saveIngredientMix(ingredient.id,ingredient.ingredientName,ingredientAmount.value)">Aplicar</button>
+                         
+                      </td>
                     </tr>
 
                 </tbody>
             </table>
         </div>
         <div class="col md-2">
-            <h2 class="h2 text-center fw-bold">Receta</h2>
+            <h2 *ngIf="!productSelected" class=" h2 text-center fw-bold">Receta</h2>
+            <h2 *ngIf="productSelected" class=" h2 text-center fw-bold">{{productSelectedName}}</h2>
+           
             <table class="table table-sm table-bordered border border-danger table-striped table-hover text-center ms-3">
                 <thead >
                     <tr >
-                        <th scope="col " class="text-dark fs-6">Receta</th>
+                        <th scope="col " class="text-dark fs-6">Ingrediente</th>
+                        <th scope="col " class="text-dark fs-6">Cantidad</th>
                     
                        
                      
@@ -72,6 +80,7 @@
                 <tbody>
                     <tr *ngFor="let ingredientMix of ingredientMixes">
                        <td scope="row" class="fw-bold fs-5">{{ingredientMix.ingredientName}}</td>
+                       <td scope="row" class="fw-bold fs-5">{{ingredientMix.ingredientAmount}} gr</td>
                     
                        
                     </tr>

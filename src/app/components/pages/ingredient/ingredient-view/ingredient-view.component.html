@@ -9,8 +9,8 @@
             <p class="card-text fs-5 text-center text-success fst-italic mt-2">{{ingredients.ingredientName}} </p>
             <p class="card-text fs-7 text-center mt-4">Categoria: {{ingredients.categoryName}}</p>
             <div  class="d-inline card-text text-center fs-7">Stock:</div>
-            <div *ngIf="ingredients.ingredientName" class="d-inline card-text text-center text-success fs-6 mb-3">{{ingredients.ingredientAmount}}</div>
-            <div *ngIf="ingredients.ingredientAmount<500" class="d-inline card-text text-center text-danger fs-6 mb-1">{{ingredients.ingredientAmount}}</div>
+            <div *ngIf="ingredients.ingredientAmount>=500" class="d-inline card-text text-center text-success fs-6 mb-1">{{ingredients.ingredientAmount}} gr</div>
+            <div *ngIf="ingredients.ingredientAmount<500" class="d-inline card-text text-center text-danger fs-6 mb-1">{{ingredients.ingredientAmount}} gr</div>
             <div *ngIf="ingredients.ingredientAmount==null" class="d-inline card-text text-center text-danger fs-6 mb-2 mt-0">Sin stock</div>
           
            

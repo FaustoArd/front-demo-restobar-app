@@ -20,15 +20,11 @@ export class IngredientMixService {
     if(error.status===0){
      // console.error('se ha producido un error', error.error);
     }else if (error.status===400){
-      return throwError(() => new Error(error.error))
+      return throwError(() => new Error("El ingrediente ya existe en esta receta"))
      // console.error('Backend retorno el codigo de estado', error.status, error.error)
-    }else if(error.status===417){
-      return throwError(() => new Error(error.error))
-    }else if(error.status===400){
+    }
       return throwError(() => new Error(error.error))
     }
-    return throwError(() => new Error(error.error))
-  }
 
   
 

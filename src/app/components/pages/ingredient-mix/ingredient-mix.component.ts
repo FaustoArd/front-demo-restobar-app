@@ -9,6 +9,7 @@ import { ProductDto } from 'src/app/models/productDto';
 import { IngredientDto } from 'src/app/models/ingredientDto';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-ingredient-mix',
@@ -51,15 +52,24 @@ onProductUnselect():void{
   this.productSelected = false;
   this.productSelectionId = NaN ;
   this.productSelectedName = "";
-  this.router.navigateByUrl("ingredient-mix");
+  this.ingredientMixes.length = 0;
+ this.router.navigateByUrl("ingredient-mix");
   
 }
 
-saveIngredientMix(ingredientId:number){
+saveIngredientMix(ingredientId:number,ingredientName:string,ingredientAmount:string){
+  if(Number(ingredientAmount)<1){
+    this.onSnackBarMessage("La cantidad tiene que ser mayor a 0");
+  }else if(Number(ingredientAmount)>2000000){
+    this.onSnackBarMessage("El Cantidad maxima puede ser 2 millones");
+  }else{
   var productId = Number(this.storageService.getCurrentSelectedProductId());
   console.log(productId)
   this.selectedIngredientMix = new IngredientMixDto();
   this.selectedIngredientMix.ingredientId = ingredientId;
+  this.selectedIngredientMix.ingredientName =ingredientName;
+  this.selectedIngredientMix.ingredientAmount = Number(ingredientAmount);
+  console.log(this.selectedIngredientMix)
   this.ingredientMixService.createMix (this.selectedIngredientMix,productId).subscribe({
     next:(ingredientMixData)=>{
       this.onSnackBarMessage(ingredientMixData);
@@ -72,6 +82,7 @@ saveIngredientMix(ingredientId:number){
       this.getallIngredientMixesByProductId(Number(this.storageService.getCurrentSelectedProductId()));
     }
   });
+  }
 }
 
 
