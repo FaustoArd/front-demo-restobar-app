@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { EmployeeDto } from '../models/employeeDto';
+import { EmployeeJobDto } from '../models/employeeJobDto';
 
 const EMPLOYEE_BASE_URL = 'http://localhost:8080/api/v1/arbam/employees';
 
@@ -32,7 +33,16 @@ export class EmployeeService {
   }
 
   getAllEmployeesbyId(ids:number[]):Observable<EmployeeDto[]>{
-    return this.http.get<EmployeeDto[]>(`${EMPLOYEE_BASE_URL}/all_by_id?waitressesIds=${ids}`,this.httpOptions)
+    return this.http.get<EmployeeDto[]>(`${EMPLOYEE_BASE_URL}/all_by_id?employeesId=${ids}`,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  getAllJobRolesOrderAsc():Observable<EmployeeJobDto[]>{
+    return this.http.get<EmployeeJobDto[]>(`${EMPLOYEE_BASE_URL}/all_jobs`,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+  createJobRole(jobRole:EmployeeJobDto):Observable<EmployeeJobDto>{
+    return this.http.post<EmployeeJobDto>(`${EMPLOYEE_BASE_URL}/new_job_role`,jobRole,this.httpOptions)
     .pipe(catchError(this.handleError));
   }
   

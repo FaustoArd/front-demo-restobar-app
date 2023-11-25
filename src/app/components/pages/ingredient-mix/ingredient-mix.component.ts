@@ -9,7 +9,8 @@ import { ProductDto } from 'src/app/models/productDto';
 import { IngredientDto } from 'src/app/models/ingredientDto';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-ingredient-mix',
@@ -56,6 +57,7 @@ onProductUnselect():void{
  this.router.navigateByUrl("ingredient-mix");
   
 }
+
 
 saveIngredientMix(ingredientId:number,ingredientName:string,ingredientAmount:string){
   if(Number(ingredientAmount)<1){
