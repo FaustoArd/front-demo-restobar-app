@@ -19,6 +19,7 @@ export class ProductNewComponent implements OnInit{
   categories:CategoryDto[] = [];
   product!:ProductDto;
   errorData:any;
+  products:ProductDto[]= [];
 
   productForm  = new FormGroup({
     id: new FormControl(''),
@@ -31,6 +32,7 @@ export class ProductNewComponent implements OnInit{
 
 ngOnInit(): void {
     this.getAllCategories();
+    this.getAllProductsByNameAsc();
 }
 
 get productName(){
@@ -74,6 +76,17 @@ get categoryId(){
     }
 
 
+  }
+  getAllProductsByNameAsc(){
+    this.productService.getAllProductsByProductNameAsc().subscribe({
+      next:(productsData)=>{
+      this.products = productsData;
+      },
+      error:(errorData)=>{
+        this.errorData = errorData;
+        this.onSnackBarMessage(this.errorData);
+      }
+    });
   }
 
 

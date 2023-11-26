@@ -1,12 +1,12 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="row">
-    <div class="col-md-4 mt-3">
-        <h2 class="h2 text-center">Nuevo Rol de trabajo</h2>
-            <form [formGroup]="jobRoleBuilder"  class="form-group border border-dark text-center fw-bold">
+    <div class="col-md-4 mt-5">
+       
+            <form [formGroup]="jobRoleBuilder"  class="form-group p-3 bg-light border border-dark text-center fw-bold">
                 <div class="form-group mt-2">
                     <label for="job-role" class="form-label fs-7">Rol de trabajo</label>
-                    <input class="form-control" type="text" formControlName="jobRole" id="job-role">
+                    <input class="form-control border-dark" type="text" formControlName="jobRole" id="job-role">
                     <div *ngIf="jobRole.invalid && (jobRole.dirty || jobRole.touched)" class="text-danger">
                     <div *ngIf="jobRole.errors?.['required']">
                     Falta el nombre...
@@ -15,7 +15,7 @@
                 </div>
            <div class="form-group mt-2">
                     <label for="employee-salary" class="form-label fs-7  border-dark">Salario en pesos</label>
-                    <input class="form-control " type="number" formControlName="employeeSalary" id="employee-salary">
+                    <input class="form-control border-dark " type="number" formControlName="employeeSalary" id="employee-salary">
 
                     <div *ngIf="employeeSalary.invalid && (employeeSalary.dirty || employeeSalary.touched)" class="text-danger">
                         <div *ngIf="employeeSalary.errors?.['required']">
@@ -27,23 +27,23 @@
             </form>
 
         </div>
-        <div class="col-md-6 mt-3">
-            <h2 class="h2 text-center">Roles de trabajo</h2>
+        <div class="col-md-6 mt-5">
+           
             <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
                 <thead>
-                    <tr class="bg-primary opacity-50">
+                    <tr class="bg-primary opacity-50 text-center">
                         <th scope="col">Rol de trabajo</th>
                        <th scope="col">Salario</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let employeeJob of employeeJobs">
+                    <tr class="text-center" *ngFor="let employeeJob of employeeJobs">
                        <th scope="row" class="fw-bold">{{employeeJob.jobRole}}</th>
-                        <th scope="row" class="fw-bold">{{employeeJob.employeeSalary}}</th>
+                        <th scope="row" class="fw-bold">{{employeeJob.employeeSalary | currency: '$': 'symbol'}}</th>
                          <th>
-                            <button class="btn btn-success btn-sm text-white ms-4 ">Editar</button>
-                            <button class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
+                            <button class="btn btn-success btn-sm text-white  ">Editar</button>
+                            <button class="btn btn-danger btn-sm text-white ms-2">Eliminar</button>
                         </th>
                     </tr>
                  </tbody>

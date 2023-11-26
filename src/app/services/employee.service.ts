@@ -37,6 +37,10 @@ export class EmployeeService {
     .pipe(catchError(this.handleError));
   }
 
+  createEmployee(employee:EmployeeDto):Observable<string>{
+    return this.http.post<string>(`${EMPLOYEE_BASE_URL}/new_employee`,employee,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
   getAllJobRolesOrderAsc():Observable<EmployeeJobDto[]>{
     return this.http.get<EmployeeJobDto[]>(`${EMPLOYEE_BASE_URL}/all_jobs`,this.httpOptions)
     .pipe(catchError(this.handleError));

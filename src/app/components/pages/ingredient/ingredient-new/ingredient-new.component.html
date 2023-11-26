@@ -5,10 +5,10 @@
 
         </div>
         <div class="col-md-4 mt-5">
-            <form [formGroup]="ingredientFormBuilder"  class="form-group border border-dark text-center fw-bold">
+            <form [formGroup]="ingredientFormBuilder"  class="form-group   p-3 bg-light border border-dark text-center fw-bold">
                 <div class="form-group mt-2">
                     <label for="ingredient-name" class="form-label fs-7">Nombre</label>
-                    <input class="form-control" type="text" formControlName="ingredientName" id="ingredient-name">
+                    <input class="form-control border-dark" type="text" formControlName="ingredientName" id="ingredient-name">
                     <div *ngIf="ingredientName.invalid && (ingredientName.dirty || ingredientName.touched)" class="text-danger">
                     <div *ngIf="ingredientName.errors?.['required']">
                     Falta el nombre...
@@ -34,7 +34,7 @@
             </div>
                 <div class="form-group mt-2">
                     <label for="ingredient-amount" class="form-label fs-7  border-dark">Cantidad</label>
-                    <input class="form-control " type="number" formControlName="ingredientAmount" id="ingredient-amount">
+                    <input class="form-control border-dark " type="number" formControlName="ingredientAmount" id="ingredient-amount">
 
                     <div *ngIf="ingredientAmount.invalid && (ingredientAmount.dirty || ingredientAmount.touched)" class="text-danger">
                         <div *ngIf="ingredientAmount.errors?.['required']">

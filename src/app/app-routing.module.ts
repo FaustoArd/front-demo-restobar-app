@@ -15,6 +15,7 @@ import { IngredientNewComponent } from './components/pages/ingredient/ingredient
 import { IngredientModifyComponent } from './components/pages/ingredient/ingredient-modify/ingredient-modify.component';
 import { IngredientMixComponent } from './components/pages/ingredient-mix/ingredient-mix.component';
 import { EmployeeManagerComponent } from './components/pages/employee-manager/employee-manager.component';
+import { EmployeeComponent } from './components/pages/employee/employee/employee.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -33,7 +34,9 @@ const routes: Routes = [
   { path:'ingredient-edit',component:IngredientViewComponent },
   { path:'ingredient-modify/:id',component:IngredientModifyComponent },
   { path:'ingredient-mix', component:IngredientMixComponent },
-  {path:'employee-manager', component:EmployeeManagerComponent}
+  { path:'employee-manager', component:EmployeeManagerComponent },
+  { path:'employee-new', component:EmployeeComponent }
+
 ];
 
 @NgModule({

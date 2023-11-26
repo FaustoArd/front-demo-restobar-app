@@ -36,6 +36,7 @@ import { IngredientEditComponent } from './components/pages/ingredient/ingredien
 import { IngredientModifyComponent } from './components/pages/ingredient/ingredient-modify/ingredient-modify.component';
 import { IngredientMixComponent } from './components/pages/ingredient-mix/ingredient-mix.component';
 import { EmployeeManagerComponent } from './components/pages/employee-manager/employee-manager.component';
+import { EmployeeComponent } from './components/pages/employee/employee/employee.component';
 
 
 
@@ -63,6 +64,7 @@ import { EmployeeManagerComponent } from './components/pages/employee-manager/em
     IngredientModifyComponent,
     IngredientMixComponent,
     EmployeeManagerComponent,
+    EmployeeComponent,
     
     
   ],
