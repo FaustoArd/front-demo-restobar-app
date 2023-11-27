@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders,HttpErrorResponse } from '@angular/common/http';
-import { Observable,catchError,throwError } from 'rxjs';
+import { Observable,catchError,pipe,throwError } from 'rxjs';
 import { WorkingDayDto } from '../models/workingDayDto';
 import { EmployeeDto } from '../models/employeeDto';
 
@@ -28,8 +28,9 @@ export class WorkingDayService {
     headers: new HttpHeaders({ 'Content-Type':'application/json'})
   }
 
-  initWorkingDay():Observable<any>{
-    return this.http.post<any>(`${WORKINGDAY_BASE_URL}/init`,this.httpOptions).pipe(catchError(this.handleError));
+ 
+  getallWorkingDayByDateAsc():Observable<WorkingDayDto[]>{
+    return this.http.get<WorkingDayDto[]>(`${WORKINGDAY_BASE_URL}/all`,this.httpOptions).pipe(catchError(this.handleError));
   }
 
   startWorkingDay(workingDay:WorkingDayDto):Observable<WorkingDayDto>{
@@ -38,6 +39,10 @@ export class WorkingDayService {
 
   updateWorkingDay(workingDay:WorkingDayDto):Observable<WorkingDayDto>{
     return this.http.put<WorkingDayDto>(`${WORKINGDAY_BASE_URL}/`,workingDay,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  closeWorkingDay(id:number):Observable<string>{
+    return this.http.get<string>(`${WORKINGDAY_BASE_URL}/close/${id}`,this.httpOptions).pipe(catchError(this.handleError));
   }
 
   getWorkingDayById(id:number):Observable<WorkingDayDto>{

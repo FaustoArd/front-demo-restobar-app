@@ -6,6 +6,7 @@ import { count } from 'rxjs';
 import { EmployeeDto } from 'src/app/models/employeeDto';
 import { WorkingDayDto } from 'src/app/models/workingDayDto';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { RestoTableService } from 'src/app/services/resto-table.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { WorkingDayService } from 'src/app/services/working-day.service';
 
@@ -25,10 +26,11 @@ export class WorkingDayComponent implements OnInit {
   isDayStarted!: boolean;
   employeesId: Array<number> = [];
   errorData: any;
+  closeData!:string;
 
   constructor(private formBuilder: FormBuilder, private workingDayService: WorkingDayService
     , private snackBar: MatSnackBar, private storageService: StorageService,
-    private employeeService: EmployeeService, private router: Router) { }
+    private employeeService: EmployeeService, private router: Router,private restoTableService:RestoTableService) { }
 
   startWorkingDayForm = this.formBuilder.group({
     id: [0],
@@ -53,7 +55,7 @@ export class WorkingDayComponent implements OnInit {
     return this.startWorkingDayForm.controls.employees;
   }
   ngOnInit(): void {
-
+   //this.deleteWorkingDayStorage();
     this.getAllEmployees();
     this.isDayStarted = Boolean(this.storageService.getCurrentWorkingDayStatus());
     if (this.isDayStarted) {
@@ -147,6 +149,28 @@ export class WorkingDayComponent implements OnInit {
         }
       })
     }
+  }
+  
+
+  closeWorkingDay(){
+    var wdId = Number(this.storageService.getCurrentWorkingDayId());
+   this.workingDayService.closeWorkingDay(wdId).subscribe({
+    next:(closeData)=>{
+      this.closeData = closeData
+      this.onSnackBarMessage(closeData);
+    },
+    error:(errorData)=>{
+      this.errorData = errorData;
+      this.onSnackBarMessage("No podes finalizar la jornada porque todavia hay mesas abiertas");
+    },
+    complete:()=>{
+      this.storageService.deleteCurrentWorkingDayId();
+      this.storageService.deleteCurrentWorkingDayStatus();
+      this.router.navigateByUrl("/home");
+    }
+
+   });
+   
   }
 
 

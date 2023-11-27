@@ -43,6 +43,13 @@
                 <button mat-menu-item routerLink="/employee-manager">Roles</button>
                 <button mat-menu-item routerLink="/employee-new">Empleados</button>
               </mat-menu>
+            </div>
+              <div class="col-md-1">
+                <button mat-button [matMenuTriggerFor]="statisticMenu" class="text-white">Jornadas</button>
+                <mat-menu #statisticMenu yPosition="above">
+                    <button mat-menu-item routerLink="/statistic-main">Jornadas</button>
+                  
+                  </mat-menu>
         </div>
        
        

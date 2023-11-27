@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col mt-3">
+            <h2 class="h2 text-center">Jornadas</h2>
+            <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
+                <thead>
+                    <tr class="bg-primary opacity-50">
+                        <th scope="col">Fecha</th>
+                       <th scope="col">Total inicio de caja</th>
+                       <th scope="col">Total Jornada + Caja</th>
+                       <th scope="col">Total Con descuento Pago Empleados</th>
+                        <th scope="col">Total efectivo</th>
+                        <th scope="col">Total Transferencia</th>
+                        <th scope="col">Total Debito</th>
+                        <th scope="col">Total Credito</th>
+                        <th scope="col">Total Mercado Pago</th>
+                        <th scope="col">Total Salario Empleados</th>
+                        <th scope="col">Opciones</th>
+                       
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let workingDay of workingDays">
+                       <td scope="row" class="fw-bold">{{workingDay.date}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalStartCash}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalWorkingDay}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalWorkingDayWithDiscount}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalCash}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalTransf}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalDebit}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalCredit}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalMP}}</td>
+                     <td scope="row" class="fw-bold">{{workingDay.totalEmployeeSalary}}</td>
+                        <td>
+                            <button class="btn btn-success btn-sm text-white ms-4 ">Editar</button>
+                            <button class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
+                        </td>
+                    </tr>
+                 </tbody>
+            </table>
+        </div>
+    </div>
+</div>

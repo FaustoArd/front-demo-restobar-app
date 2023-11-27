@@ -61,6 +61,11 @@ getAllPaymentsMethods():Observable<PaymentMethodDto[]>{
 }
 
 
+isAnyTableOpen():Observable<boolean>{
+  return this.http.get<boolean>(`${RESTOTABLE_BASE_URL}/any_table_open`,this.httpOptions).pipe(catchError(this.handleError));
+}
+
+
 
 
 

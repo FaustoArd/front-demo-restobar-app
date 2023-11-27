@@ -2,15 +2,16 @@ import { EmployeeDto } from "./employeeDto";
 
 export class WorkingDayDto{
     id!:number;
+    date!:Date;
     totalStartCash!:number;
     totalWorkingDay!:number;
-    totalPostEmployeeSalary!:number;
     totalCash!:number;
+    totalWorkingDayWithDiscount!:number;
     totalDebit!:number;
     totalTransf!:number;
-    cashierName!:string;
-    employees!:Array<EmployeeDto>;
-    totalWaitressSalary!:number;
-    totalCashierSalary!:number;
-    dayStarted!:boolean;
+    totalCredit!:number;
+    totalMP!:number;
+    totalEmployeeSalary!:number;
+    employees!:Array<EmployeeDto>
+     dayStarted!:boolean;
 }
