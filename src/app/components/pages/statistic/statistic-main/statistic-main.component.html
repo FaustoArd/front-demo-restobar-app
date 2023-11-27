@@ -34,7 +34,7 @@
                        <td scope="row" class="fw-bold">{{workingDay.totalMP}}</td>
                      <td scope="row" class="fw-bold">{{workingDay.totalEmployeeSalary}}</td>
                         <td>
-                            <button class="btn btn-success btn-sm text-white ms-4 ">Editar</button>
+                            <button (click)="getEmployeesByWorkingDayId(workingDay.id)" class="btn btn-success btn-sm text-white ms-4 ">Empleados</button>
                             <button class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
                         </td>
                     </tr>
@@ -42,4 +42,32 @@
             </table>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4 mt-3">
+            <h2 class="h2 text-center">Empleados</h2>
+            <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
+                <thead>
+                    <tr class="bg-primary opacity-50">
+                        <th scope="col">Empleado</th>
+                        <th scope="col">Rol</th>
+                       <th scope="col">Salario</th>
+                   
+                     
+                       
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees">
+                       <td scope="row" class="fw-bold">{{employee.employeeName}}</td>
+                       <td scope="row" class="fw-bold">{{employee.employeeJob}}</td>
+                       <td scope="row" class="fw-bold">{{employee.employeeSalary}}</td>
+                     </tr>
+                 </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
+
+   

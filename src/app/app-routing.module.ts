@@ -17,6 +17,7 @@ import { IngredientMixComponent } from './components/pages/ingredient-mix/ingred
 import { EmployeeManagerComponent } from './components/pages/employee-manager/employee-manager.component';
 import { EmployeeComponent } from './components/pages/employee/employee/employee.component';
 import { StatisticMainComponent } from './components/pages/statistic/statistic-main/statistic-main.component';
+import { StatsEmployeesComponent } from './components/pages/statistic/stats-employees/stats-employees.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path:'ingredient-mix', component:IngredientMixComponent },
   { path:'employee-manager', component:EmployeeManagerComponent },
   { path:'employee-new', component:EmployeeComponent },
-  { path:'statistic-main',component:StatisticMainComponent}
+  { path:'statistic-main',component:StatisticMainComponent},
+  { path:'stats-employees/:id', component:StatsEmployeesComponent}
 
 ];
 

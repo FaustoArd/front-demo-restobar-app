@@ -38,6 +38,7 @@ import { IngredientMixComponent } from './components/pages/ingredient-mix/ingred
 import { EmployeeManagerComponent } from './components/pages/employee-manager/employee-manager.component';
 import { EmployeeComponent } from './components/pages/employee/employee/employee.component';
 import { StatisticMainComponent } from './components/pages/statistic/statistic-main/statistic-main.component';
+import { StatsEmployeesComponent } from './components/pages/statistic/stats-employees/stats-employees.component';
 
 
 
@@ -67,6 +68,7 @@ import { StatisticMainComponent } from './components/pages/statistic/statistic-m
     EmployeeManagerComponent,
     EmployeeComponent,
     StatisticMainComponent,
+    StatsEmployeesComponent,
     
     
   ],

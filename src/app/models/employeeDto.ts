@@ -1,3 +1,5 @@
+
+
 export class EmployeeDto {
     
     id!: number;
@@ -7,4 +9,8 @@ export class EmployeeDto {
     employeeJobId!: number;
 
     employeeJob!: string;
+
+    employeeSalary!:number;
+
+    
 }
