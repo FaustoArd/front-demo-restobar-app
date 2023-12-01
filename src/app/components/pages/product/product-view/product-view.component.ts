@@ -15,6 +15,7 @@ export class ProductViewComponent implements OnInit {
   products:ProductDto[]= [];
   product:ProductDto | undefined;
   errorData!:string;
+  deleteData!:string;
 
   constructor(private productService:ProductService,private snackBar:MatSnackBar){}
 
@@ -53,7 +54,20 @@ getProductById(id:number):void{
     }
   })
 }
-
+deleteProductbyId(id:number):void{
+  this.productService.deleteProduct(id).subscribe({
+    next:(deleteData)=>{
+      this.deleteData = this.deleteData;
+    },
+    error:(errorData)=>{
+      this.errorData = errorData;
+    },
+    complete:()=>{
+      this.onSnackBarMessage(this.deleteData);
+      this.getAllProductsByNameAsc();
+    }
+  })
+}
 
 onSnackBarMessage(message:any){
   this.snackBar.open(message, 'Cerrar', {

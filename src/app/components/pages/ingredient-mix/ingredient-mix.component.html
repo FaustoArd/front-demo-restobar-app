@@ -7,9 +7,9 @@
         (click)="onProductUnselect()">En seleccion: {{productSelectedName}}</button> 
         </div>
     </div>
-    <div class="row mt-0">
+    <div class="row mt-0 ">
         
-        <div class="col md-2 mt-0">
+        <div class="col md-2 mt-5">
             <h2 class="h2 text-center fw-bold">Productos</h2>
             <table class="table table-sm table-bordered border border-primary table-striped table-hover text-center ms-3">
                 <thead >
@@ -25,8 +25,12 @@
                     <tr *ngFor="let product of products">
                        
                         <td class="fw-bold fs-6">{{product.productName}}</td>
-                <td *ngIf="!productSelected"><button  class="btn btn-success bg-transparent text-dark fw-bold "
-                     (click)="onProductSelect(product.id)">Seleccionar</button></td>
+                <td *ngIf="!productSelected"><button  class="btn btn-success bg-danger text-dark fw-bold mx-2"
+                     (click)="onProductSelect(product.id)">Asignar</button>
+                     <button  class="btn btn-success  bg-success opacity-75 text-white fw-bold "
+                     (click)="viewProductMix(product.id)">Ver receta</button>
+                    </td>
+                   
                   
                     
                   
@@ -35,7 +39,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col md-2">
+        <div class="col md-2 mt-5">
             <h2 class="h2 text-center fw-bold">Ingredientes</h2>
             <table class="table table-sm table-bordered border border-success table-striped table-hover text-center ms-3">
                 <thead >
@@ -62,7 +66,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col md-2">
+        <div class="col md-2 mt-5">
             <h2 *ngIf="!productSelected" class=" h2 text-center fw-bold">Receta</h2>
             <h2 *ngIf="productSelected" class=" h2 text-center fw-bold">{{productSelectedName}}</h2>
            
@@ -71,6 +75,7 @@
                     <tr >
                         <th scope="col " class="text-dark fs-6">Ingrediente</th>
                         <th scope="col " class="text-dark fs-6">Cantidad</th>
+                        <th scope="col " class="text-dark fs-6">Eliminar</th>
                     
                        
                      
@@ -81,7 +86,9 @@
                     <tr *ngFor="let ingredientMix of ingredientMixes">
                        <td scope="row" class="fw-bold fs-5">{{ingredientMix.ingredientName}}</td>
                        <td scope="row" class="fw-bold fs-5">{{ingredientMix.ingredientAmount}} gr</td>
-                    
+                        <td scope="row" class="fw-bold fs-5">
+                            <button (click)="deleteIngredientFromMix(ingredientMix.id,ingredientMix.productId)">-</button>
+                        </td>
                        
                     </tr>
 

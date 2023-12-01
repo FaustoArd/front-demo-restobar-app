@@ -40,4 +40,8 @@ export class IngredientMixService {
     .pipe(catchError(this.handleError));
   }
 
+  deleteIngredientFromMix(id:number):Observable<string>{
+   return  this.http.delete<string>(`${INGREDIENT_MIX_BASE_URL}/${id}`,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
 }

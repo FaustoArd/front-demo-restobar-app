@@ -29,6 +29,8 @@ export class IngredientMixComponent implements OnInit {
   productSelected!:boolean;
   productSelectionId!:number;
   productSelectedName!:String;
+  mixData!:any;
+  deleteData!:string;
 
 
   constructor(private ingredientMixService:IngredientMixService,private snackBar:MatSnackBar,
@@ -56,6 +58,23 @@ onProductUnselect():void{
   this.ingredientMixes.length = 0;
  this.router.navigateByUrl("ingredient-mix");
   
+}
+viewProductMix(productId:number):void{
+  this.ingredientMixService.getMixesByProductId(productId).subscribe({
+    next:(mixData)=>{
+     this.mixData = mixData;
+     if(this.mixData.length==0){
+      this.onSnackBarMessage("Ese producto no tiene asignado ningun ingrediente");
+     
+     }
+     this.ingredientMixes = mixData;
+    },
+    
+      error:(errorData)=>{
+        this.errorData = errorData;
+        this.onSnackBarMessage(errorData);
+      },
+  });
 }
 
 
@@ -138,9 +157,27 @@ getAllProductsByNameAsc(){
   });
 }
 
+deleteIngredientFromMix(id:number,productId:number):void{
+  this.ingredientMixService.deleteIngredientFromMix(id).subscribe({
+    next:(deleteData)=>{
+      this.deleteData = deleteData;
+     
+    },
+    error:(errorData)=>{
+      this.errorData = errorData;
+      this.onSnackBarMessage(JSON.stringify(this.errorData));
+    },
+    complete:()=>{
+      this.onSnackBarMessage(JSON.stringify(this.deleteData));
+      this.ingredientMixService.getMixesByProductId(productId).subscribe(mixes => this.ingredientMixes = mixes);
+     
+    }
+  })
+}
+
 onSnackBarMessage(message:any){
   this.snackBar.open(message, 'Cerrar', {
-       duration: 3000,
+       duration: 2500,
        verticalPosition: 'top',
        horizontalPosition: 'center',
        
