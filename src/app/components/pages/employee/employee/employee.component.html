@@ -2,10 +2,10 @@
 <div class="container">
     <div class="row">
     <div class="col-md-4 mt-3">
-        <h2 class="h2 text-center">Nuevo Rol de trabajo</h2>
+        <h2 class="h2 text-center">Nuevo Empleado</h2>
             <form [formGroup]="employeeForm"  class="form-group  p-3 bg-light border border-dark text-center fw-bold">
                 <div class="form-group mt-2">
-                    <label for="employee-name" class="form-label fs-7">Rol de trabajo</label>
+                    <label for="employee-name" class="form-label fs-7 border-dark">Empleado</label>
                     <input class="form-control" type="text" formControlName="employeeName" id="employee-name">
                     <div *ngIf="employeeName.invalid && (employeeName.dirty || employeeName.touched)" class="text-danger">
                     <div *ngIf="employeeName.errors?.['required']">
@@ -46,7 +46,7 @@
                         <th scope="row" class="fw-bold">{{employee.employeeJob}}</th>
                          <th>
                             <button class="btn btn-success btn-sm text-white ms-4 ">Editar</button>
-                            <button class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
+                            <button class="btn btn-danger btn-sm text-white  ms-4 ">Eliminar</button>
                         </th>
                     </tr>
                  </tbody>
