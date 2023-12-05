@@ -10,8 +10,7 @@ import { OrderService } from 'src/app/services/order.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryService } from 'src/app/services/category.service';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormArray, FormBuilder, UntypedFormArray, Validators } from '@angular/forms';
+import {  FormBuilder, Validators } from '@angular/forms';
 import { PaymentMethodDto } from 'src/app/models/PaymentMethodDto';
 import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
@@ -103,6 +102,7 @@ get paymentMethod(){
 }
 
 confirmCloseTable():void{
+  if(this.paymentMethodForm.valid){
   var confirmText = "Seguro que desea cerrar la mesa?";
   this.confirmationService.confirmDialog(confirmText).subscribe({
     next:(confirmData)=>{
@@ -114,7 +114,9 @@ confirmCloseTable():void{
     }
   }
   });
-
+  }else{
+    this.onSnackBarMessage("Debes ingresar un metodo de pago.");
+  }
 }
 
 

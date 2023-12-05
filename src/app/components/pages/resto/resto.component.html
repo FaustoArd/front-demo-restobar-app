@@ -35,22 +35,22 @@
 <ng-template #rTableCreationTemplate>
   <h1 class="h1 text-center text-white bg-success" mat-dialog-title>Abrir mesa</h1>
   <div mat-dialog-content class="">
-    <form class="form-group border border-success justify-center mt-3 bg-light" [formGroup]="createRestoTableForm"
-      (ngSubmit)="onOpenTableSubmit();onCreate()">
+    <form class="form-group p-3 bg-light border border-dark text-center fw-bold" [formGroup]="createRestoTableForm"
+      (ngSubmit)="onOpenTableSubmit()">
       <div>
         <mat-form-field class="d-block bg-light">
-          <input matInput type="number" class="form-control " formControlName="tableNumber" id="tableNumber"
+          <input matInput type="number" class="form-control border-dark " formControlName="tableNumber" id="tableNumber"
             placeholder="Numero de mesa">
           <div *ngIf="tableNumber.invalid && (tableNumber.dirty || tableNumber.touched)" class="text-danger">
-            <div class="mt-1" *ngIf="tableNumber.errors?.['required']">
-              Numero de mesa invalido
-            </div>
+            <p class="mt-1" *ngIf="tableNumber.errors?.['required']">
+              <small> Numero de mesa invalido</small>
+            </p>
           </div>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class=" bg-light ">
-          <mat-label class="form-label fs-7">Atendida por</mat-label>
+          <mat-label class="form-label fs-7 border-primary">Atendida por</mat-label>
           <mat-select class="border-primary" [formGroup]="createRestoTableForm" required formControlName="employeeId"
             id="employeeId">
             <mat-option>--</mat-option>

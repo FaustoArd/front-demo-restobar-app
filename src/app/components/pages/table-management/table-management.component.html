@@ -28,8 +28,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let category of categories">
-                            <td class="display-7 fw-bold text-center text-dark">{{category.categoryName}}</td>
-                            <td class="display-7 text-center"><a class="btn  mt-3"
+                            <td class="fs-6 fw-bold text-center text-dark">{{category.categoryName}}</td>
+                            <td class="text-center"><a class="btn  mt-3"
                                     (click)="getProductsByCategoryId(category.id)">--</a></td>
                         </tr>
                     </tbody>

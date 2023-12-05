@@ -95,6 +95,7 @@ export class RestoComponent implements OnInit {
         complete: () => {
           this.onSnackBarMessage('Mesa activa');
           this.getAllTablesOrderByIdAsc();
+          this.onCreate();
         }
       });
     }

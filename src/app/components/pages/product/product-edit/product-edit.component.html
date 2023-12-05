@@ -3,8 +3,8 @@
     <div class="row">
       
         <div class="col-md-3 mt-5">
-            <h2 class="h2 text-center">Nuevo</h2>
-            <form [formGroup]="productEditForm"  class="form-group justifty-center border border-dark text-center fw-bold">
+            <h2 class="h2 text-center">Modificar</h2>
+            <form [formGroup]="productEditForm"  class="form-group p-3 bg-light border border-dark text-center fw-bold">
                 <div class="form-group mt-2">
                     <label for="product-name" class="form-label fs-7  border-dark">Nombre</label>
                     <input class="form-control" type="text" formControlName="productName" id="product-name">
@@ -50,8 +50,8 @@
                         <th scope="col">Categoria</th>
                         <th scope="col">Stock</th>
                         <th scope="col">Precio</th>
-                        <th scope="col">Ingredientes</th>
-                        <th scope="col">Opciones</th>
+                        <th scope="col">Receta</th>
+                      
 
                     </tr>
                 </thead>
@@ -62,12 +62,10 @@
                         <th scope="row" class="fw-bold">{{product.categoryName}}</th>
                         <th scope="row" class="fw-bold">{{product.productStock}}</th>
                         <th scope="row" class="fw-bold">{{product.productPrice}}</th>
-                        <th scope="row" class="fw-bold">{{product.mixed}}</th>
+                        <th *ngIf="product.mixed" scope="row" class="fw-bold">Si</th>
+                        <th *ngIf="!product.mixed" scope="row" class="fw-bold">No</th>
 
-                        <th>
-                            <button class="btn btn-success btn-sm text-white ms-4 ">Editar</button>
-                            <button class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
-                        </th>
+                       
                     </tr>
                  </tbody>
             </table>
@@ -79,17 +77,14 @@
                     <tr class="bg-primary opacity-50">
                         <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Opciones</th>
+                      
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let category of categories">
                         <th scope="row" class="fw-bold">{{category.id}}</th>
                         <th scope="row" class="fw-bold">{{category.categoryName}}</th>
-                        <th>
-                            <button class="btn btn-success btn-sm text-white ms-4 ">Editar</button>
-                            <button class="btn btn-danger btn-sm text-white  ms-4">Eliminar</button>
-                        </th>
+                      
                     </tr>
                  </tbody>
             </table>

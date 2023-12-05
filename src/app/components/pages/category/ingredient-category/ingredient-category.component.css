@@ -1,0 +1,20 @@
+#btnEdit{
+    background-color: black;
+    color: black;
+}
+#btnEdit:hover{
+    background-color: green;
+    color:green;
+}
+
+#btnSubmit{
+    border-radius: 0.4rem;
+    background-color: green;
+    color:white;
+}
+
+#btnSubmit:hover{
+
+    background-color: black;
+    color: rgb(83, 220, 83);
+}

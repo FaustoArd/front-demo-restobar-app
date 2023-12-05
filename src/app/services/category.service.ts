@@ -25,6 +25,8 @@ export class CategoryService {
   }
 
 
+
+  /**Product Category */
   getAllCategories():Observable<CategoryDto[]>{
     return this.http.get<CategoryDto[]>(`${CATEGORY_BASE_URL}/all`,this.httpOptions).pipe(catchError(this.handleError));
   }
@@ -36,9 +38,14 @@ export class CategoryService {
     return this.http.post<CategoryDto>(`${CATEGORY_BASE_URL}/`,category,this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  /**Ingredient Category */
   getAllIngredientCategories():Observable<IngredientCategoryDto[]>{
     return this.http.get<IngredientCategoryDto[]>(`${CATEGORY_BASE_URL}/all_ingredient`
     ,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  getIngedientCategoryById(id:number):Observable<IngredientCategoryDto>{
+    return this.http.get<IngredientCategoryDto>(`${CATEGORY_BASE_URL}/ingredient/${id}`,this.httpOptions).pipe(catchError(this.handleError));
   }
 
   saveIngredientCategory(category:IngredientCategoryDto):Observable<IngredientCategoryDto>{
