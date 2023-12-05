@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductDto } from 'src/app/models/productDto';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 import { ProductService } from 'src/app/services/product.service';
 
 
@@ -16,13 +17,16 @@ export class ProductViewComponent implements OnInit {
   product:ProductDto | undefined;
   errorData!:string;
   deleteData!:string;
+  confirmData!:boolean;
 
-  constructor(private productService:ProductService,private snackBar:MatSnackBar){}
+  constructor(private productService:ProductService,private snackBar:MatSnackBar,private confirmDialogService:ConfirmDialogService){}
 
 
   ngOnInit(): void {
       this.getAllProductsByNameAsc();
   }
+
+ 
 
   getAllProductsByNameAsc(){
     this.productService.getAllProductsByProductNameAsc().subscribe({
@@ -54,10 +58,26 @@ getProductById(id:number):void{
     }
   })
 }
+
+confirm(id:number){
+  var confirmMessage="Esta seguro que va a eliminar este producto?,Tambien se eliminara la receta.";
+  this.confirmDialogService.confirmDialog(confirmMessage).subscribe({
+    next:(confirmData)=>{
+      this.confirmData = confirmData;
+      if(this.confirmData){
+        this.deleteProductbyId(id);
+       
+      }else{
+        this.onSnackBarMessage("Cancelado!");
+      }
+    }
+  });
+}
+
 deleteProductbyId(id:number):void{
   this.productService.deleteProduct(id).subscribe({
     next:(deleteData)=>{
-      this.deleteData = this.deleteData;
+      this.deleteData = deleteData;
     },
     error:(errorData)=>{
       this.errorData = errorData;
@@ -72,7 +92,7 @@ deleteProductbyId(id:number):void{
 onSnackBarMessage(message:any){
   this.snackBar.open(message, 'Cerrar', {
        duration: 3000,
-       verticalPosition: 'top',
+       verticalPosition: 'bottom',
        horizontalPosition: 'center',
        
      });

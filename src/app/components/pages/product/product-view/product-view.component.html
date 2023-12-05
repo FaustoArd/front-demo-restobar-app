@@ -16,7 +16,7 @@
             <div *ngIf="product.mixed"  class=" p-1 card-text text-center text-warning fs-5 mb-1">Si</div>
             <p id="price" class="card-text text-center fst-italic fs-5"> {{product.productPrice | currency:'$':'symbol' }}</p>
             <a id="modify"  routerLink="/product-edit/{{product.id}}"  class="btn  btn-sm bg-dark opacity-75 text-white">Modificar</a>
-            <a id="delete" (click)="deleteProductbyId(product.id)"  class="btn btn-sm btn-danger btn-md opacity-75 text-white mt-1">Eliminar</a>
+            <a id="delete" (click)="confirm(product.id)"  class="btn btn-sm btn-danger btn-md opacity-75 text-white mt-1">Eliminar</a>
           </div>
         </div>
       </div>

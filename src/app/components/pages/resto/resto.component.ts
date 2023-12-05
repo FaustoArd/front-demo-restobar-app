@@ -25,6 +25,7 @@ export class RestoComponent implements OnInit {
   restoTable!: RestoTableDto;
   employees: EmployeeDto[] = [];
   restoCreationDto!: RestoTableCreateDto;
+
  // workinDayDto!: WorkingDayDto;
  isDayStarted!:boolean;
  errorData!:String;
@@ -49,11 +50,11 @@ export class RestoComponent implements OnInit {
     if(!this.isDayStarted){
       this.onSnackBarMessage("Debes iniciar la jornada de trabajo para poder abrir mesas...")
     }else{
-    this.getAllEmployees();
+    this.getEmployeesByWorkingDayId();
     this.matDialogRef = this.dialogService.openDialogRestoTableCreation({
       template
     })
-    this.matDialogRef.afterClosed().subscribe(res => { console.log('Creation table template close', res) })
+    this.matDialogRef.afterClosed().subscribe(res => { console.log('Update Job Role template close', res) })
     this.createRestoTableForm.reset();
   }
   }
@@ -117,6 +118,19 @@ export class RestoComponent implements OnInit {
   getAllEmployees() {
     this.employeeService.getAllEmployees().subscribe(employee => this.employees = employee);
   }
+  getEmployeesByWorkingDayId():void{
+    this.workingDayService.findCurrentEmployees(Number(this.storageService.getCurrentWorkingDayId())).subscribe({
+      next:(empData)=>{
+        this.employees = empData;
+      },
+      error:()=>{
+        this.errorData = this.errorData;
+        this.onSnackBarMessage(this.errorData);
+      }
+
+
+    })
+  }
 
   isWorkingDayStarted(){
   
@@ -134,7 +148,7 @@ export class RestoComponent implements OnInit {
   onSnackBarMessage(message: any) {
     this.snackBar.open(message, 'Cerrar', {
       duration: 3000,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       horizontalPosition: 'center'
     });
   }

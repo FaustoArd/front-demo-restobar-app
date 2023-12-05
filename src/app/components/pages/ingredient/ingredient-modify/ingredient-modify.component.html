@@ -1,19 +1,21 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="row">
-        <div class="col">
-            <form [formGroup]="ingredientFormBuilder"  class="form-group justifty-center border border-dark text-center fw-bold">
+        
+        <div class="col"> </div>
+        <div class="col-md-4  mt-5">
+            <form [formGroup]="ingredientFormBuilder"  class=" p-3 bg-light border border-dark text-center fw-bold">
                 <div class="form-group mt-2">
-                    <label for="ingredient-name" class="form-label fs-7  border-dark">Nombre</label>
-                    <input class="form-control" type="text" formControlName="ingredientName" id="ingredient-name">
+                    <label for="ingredient-name" class="form-label fs-7 ">Nombre</label>
+                    <input class="form-control  border-dark" type="text" formControlName="ingredientName" id="ingredient-name">
                     <div *ngIf="ingredientName.invalid && (ingredientName.dirty || ingredientName.touched)" class="text-danger">
                     <div *ngIf="ingredientName.errors?.['required']">
                     Falta el nombre...
                     </div>
                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="categoryId" class="form-label fs-7 mt-4">Categoria</label>
+                <div class="form-group mt-4">
+                    <label for="categoryId" class="form-label fs-7 ">Categoria</label>
                 <select id="categoryId"  formControlName="categoryId" class="form-select border-dark  mt-2">
                     <option type="number" class="form-control" *ngFor="let category of ingredientsCategory" id="categoryId" [value]="category.id">
                         {{category.categoryName}}</option>
@@ -24,9 +26,9 @@
                            </div>
                 </select>
             </div>
-            <div class="form-group mt-2">
+            <div class="form-group mt-4">
                 <label for="ingredient-amount" class="form-label fs-7  border-dark">Cantidad</label>
-                <input class="form-control" type="number" formControlName="ingredientAmount" id="ingredient-amount">
+                <input class="form-control  border-dark" type="number" formControlName="ingredientAmount" id="ingredient-amount">
                 <div *ngIf="ingredientAmount.invalid && (ingredientAmount.dirty || ingredientAmount.touched)" class="text-danger">
                 <div *ngIf="ingredientAmount.errors?.['required']">
                 Falta el nombre...
@@ -36,5 +38,6 @@
                 <button type="submit" (click)="onUpdateIngredient()" class="btn btn-success border border-dark mt-2 mb-2">Guardar</button>
             </form>
         </div>
+        <div class="col">  </div>
     </div>
 </div>

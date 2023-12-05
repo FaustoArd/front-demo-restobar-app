@@ -6,6 +6,8 @@ import { EmployeeDto } from '../models/employeeDto';
 
 const WORKINGDAY_BASE_URL = "http://localhost:8080/api/v1/arbam/working_days";
 
+const EXCEL_BASE_URL = "http://localhost:8080/api/v1/arbam/excel";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -49,6 +51,10 @@ export class WorkingDayService {
     return this.http.get<WorkingDayDto>(`${WORKINGDAY_BASE_URL}/${id}`,this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  deleteWorkingDay(id:number):Observable<string>{
+    return this.http.delete<string>(`${WORKINGDAY_BASE_URL}/${id}`,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
   deleteEmployeesById(employeesId:number,workingDayId:number):Observable<WorkingDayDto>{
     return this.http.delete<WorkingDayDto>(`${WORKINGDAY_BASE_URL}/employees?employeesId=${employeesId}&workingDayId=${workingDayId}`)
     .pipe(catchError(this.handleError));
@@ -60,6 +66,15 @@ export class WorkingDayService {
 
   findCurrentEmployees(workingDayId:number):Observable<EmployeeDto[]>{
     return this.http.get<EmployeeDto[]>(`${WORKINGDAY_BASE_URL}/find_employees?workingDayId=${workingDayId}`).pipe(catchError(this.handleError));
+  }
+
+  create(){
+    
+  }
+  
+
+  exportToExcel(workingDayId:number):Observable<Blob>{
+    return this.http.get<Blob>(`${EXCEL_BASE_URL}/${workingDayId}`,this.httpOptions).pipe(catchError(this.handleError));
   }
 
  

@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div class="container-flex">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2 mt-5">
+            <form class="form-group border p-3 bg-lightborder-dark text-center" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+               <div class="form-group"></div>
+                <label for="categoryName" class="d-block fs-6 fw-bold">Nombre </label>
+                <input id="categoryName" type="text" formControlName="categoryName">
+                <div *ngIf="categoryName.invalid && (categoryName.dirty || categoryName.touched)" class="text-danger">
+                    <div *ngIf="categoryName.errors?.['required']">
+                    Debes agregar una categoria
+                    </div>
+                   </div>
+
+
+                <button type="submit" class="btn  btn-sm btn-success mt-2">Guardar</button>
+            </form>
+        </div>
+        <div class="col">
+        
+<div class="container-flex mt-5 text-center">
+  <div class="row">
+   
+    <div class="col-md-4">
+<table class="table table-fluid table-hover table-bordered table-striped border border-dark">
+    <thead>
+      <tr class="bg-primary opacity-50">
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Editar</th>
+       </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <th scope="row" class="fw-bold">{{category.id}}</th>
+        <th scope="row" class="fw-bold">{{category.categoryName}}</th>
+        <th>
+        <button class="btn btn-success btn-sm bg-transparent text-center text-white ms-1 ">-</button>
+      
+      </th>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+        </div>
+    </div>
+</div>
+

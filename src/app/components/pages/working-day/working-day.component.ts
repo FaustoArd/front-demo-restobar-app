@@ -129,6 +129,9 @@ export class WorkingDayComponent implements OnInit {
   }
 
   onStartWorkgingDay(): void {
+    if(this.employeesId.length==0){
+      this.onSnackBarMessage("Debes seleccionar al menos un empleado");
+    }else{
     this.startWorkingDayForm.get('employees')?.setValue(this.employeesId);
     if (this.startWorkingDayForm.valid) {
       this.workingDay = new WorkingDayDto();
@@ -149,6 +152,7 @@ export class WorkingDayComponent implements OnInit {
         }
       })
     }
+  }
   }
   
 
@@ -205,7 +209,7 @@ export class WorkingDayComponent implements OnInit {
   onSnackBarMessage(message: any) {
     this.snackBar.open(message, 'Cerrar', {
       duration: 3000,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       horizontalPosition: 'center'
     });
   }

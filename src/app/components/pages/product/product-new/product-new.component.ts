@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoryService } from 'src/app/services/category.service';
 import { CategoryDto } from 'src/app/models/categoryDto';
 import { ProductDto } from 'src/app/models/productDto';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { ProductDto } from 'src/app/models/productDto';
 })
 export class ProductNewComponent implements OnInit{
 
-  constructor(private productService:ProductService,private snackBar:MatSnackBar,private categoryService:CategoryService){}
+  constructor(private productService:ProductService,private snackBar:MatSnackBar,
+    private categoryService:CategoryService){}
 
   categories:CategoryDto[] = [];
   product!:ProductDto;
@@ -94,7 +96,7 @@ get categoryId(){
   onSnackBarMessage(message:any){
     this.snackBar.open(message, 'Cerrar', {
          duration: 3000,
-         verticalPosition: 'top',
+         verticalPosition: 'bottom',
          horizontalPosition: 'center',
          
        });

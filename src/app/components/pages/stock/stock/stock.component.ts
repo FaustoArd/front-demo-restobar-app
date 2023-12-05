@@ -17,12 +17,14 @@ productStock!:ProductStock;
 errorData!:string;
 messageData!:string;
 
+
   constructor(private productService:ProductService,private snackBar:MatSnackBar){}
 
 
 
   ngOnInit(): void {
       this.getAllProductsByProductNameAsc();
+     
 
   }
 
@@ -48,8 +50,12 @@ messageData!:string;
 
    onReduceStock(productId:number,productStock:string):void{
     let productStockNum = Number(productStock);
+    console.log(productStockNum)
     if(productStockNum<0){
       this.onSnackBarMessage("No puede poner cantidad negativa");
+    }else if(productStockNum==0){
+      this.onSnackBarMessage("Debe ingresar una cantidad");
+
     }else{
       this.productStock = new ProductStock();
       this.productStock.productStock = productStockNum;
@@ -75,7 +81,7 @@ messageData!:string;
  onSnackBarMessage(message: any) {
     this.snackBar.open(message, 'Cerrar', {
       duration: 3000,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       horizontalPosition: 'center'
     });
   }

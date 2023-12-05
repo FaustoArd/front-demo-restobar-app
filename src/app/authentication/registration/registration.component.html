@@ -1,1 +1,72 @@
-<p>registration works!</p>
+<div class="container">
+    <div class="row mb-5"></div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+       <h1 class="h1 text-center mt-2 fw-bold">Registrar nuevo usuario</h1>
+        <form class="form-group justify-center mt-3" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="username" class="form-label fw-bold">Nombre: </label>
+                <input type="text" class="form-control border-dark" formControlName="name" id="name" placeholder="nombre">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+                  <div *ngIf="name.errors?.['required']">
+                    nombre requerido
+                  </div>
+                  <div  class="mt-1" *ngIf="name.errors?.['name']">
+                    el username debe tener como minimo 4 letras
+                  </div>
+                </div>
+              </div>
+              <div class="form-group  mt-4">
+                <label for="username" class="form-label fw-bold">Apellido: </label>
+                <input type="text" class="form-control border-dark" formControlName="lastname" id="lastname" placeholder="apellido">
+                <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="text-danger">
+                  <div *ngIf="lastname.errors?.['required']">
+                    nombre requerido
+                  </div>
+                  <div  class="mt-1" *ngIf="lastname.errors?.['name']">
+                    el username debe tener como minimo 4 letras
+                  </div>
+                </div>
+              </div>
+          <div class="form-group mt-4">
+            <label for="username" class="form-label fw-bold">Nombre de usuario</label>
+            <input type="text" class="form-control border-dark" formControlName="username" id="username" placeholder="nombre de usuario">
+            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+              <div *ngIf="username.errors?.['required']">
+                username requerido
+              </div>
+              <div  class="mt-1" *ngIf="username.errors?.['email']">
+                password must be at least 6 characters long.
+              </div>
+            </div>
+          </div>
+          <div class="form-group mt-4">
+            <label for="email" class="form-label fw-bold">Email: </label>
+            <input type="text" class="form-control border-dark" formControlName="email" id="email" placeholder="email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+              <div *ngIf="email.errors?.['required']">
+                email requerido
+              </div>
+              <div  class="mt-1" *ngIf="email.errors?.['email']">
+               email invalido!.
+              </div>
+            </div>
+          </div>
+          <div class="form-group mt-4">
+            <label for="password" class="form-label fw-bold">Password</label>
+            <input type="password" class="form-control border-dark" formControlName="password" id="password" placeholder="password">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+              <div class="mt-1" *ngIf="password.errors?.['required']">
+                password requerido
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-2">
+          <button type="submit"  class="btn btn-success opacity-100 btn-block mb-4 ">Registrar</button>
+        </div>
+        </form>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>

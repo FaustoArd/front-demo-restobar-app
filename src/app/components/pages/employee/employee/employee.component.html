@@ -1,12 +1,12 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="row">
-    <div class="col-md-4 mt-3">
-        <h2 class="h2 text-center">Nuevo Empleado</h2>
+    <div class="row mt-5">
+    <div class="col-md-4 ">
+       
             <form [formGroup]="employeeForm"  class="form-group  p-3 bg-light border border-dark text-center fw-bold">
                 <div class="form-group mt-2">
-                    <label for="employee-name" class="form-label fs-7 border-dark">Empleado</label>
-                    <input class="form-control" type="text" formControlName="employeeName" id="employee-name">
+                    <label for="employee-name " class="form-label fs-7 border-dark">Empleado</label>
+                    <input class="form-control border-dark" type="text" formControlName="employeeName" id="employee-name">
                     <div *ngIf="employeeName.invalid && (employeeName.dirty || employeeName.touched)" class="text-danger">
                     <div *ngIf="employeeName.errors?.['required']">
                     Falta el nombre
@@ -30,8 +30,8 @@
             </form>
 
         </div>
-        <div class="col-md-6 mt-3">
-            <h2 class="h2 text-center">Empleados</h2>
+        <div class="col-md-6">
+           
             <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
                 <thead>
                     <tr class="bg-primary opacity-50">
@@ -45,8 +45,8 @@
                        <th scope="row" class="fw-bold">{{employee.employeeName}}</th>
                         <th scope="row" class="fw-bold">{{employee.employeeJob}}</th>
                          <th>
-                            <button class="btn btn-success btn-sm text-white ms-4 ">Editar</button>
-                            <button class="btn btn-danger btn-sm text-white  ms-4 ">Eliminar</button>
+                            <button (click)="openDialogUpdateJobRole(employee.id,updateEmployeeTemplate)" class="btn btn-success btn-sm bg-transparent opacity-100 text-dark ms-4 ">Editar</button>
+                            <button (click)="deleteEmployee(employee.id)" class="btn btn-danger btn-sm bg-transparent opacity-100 text-dark  ms-4 ">Eliminar</button>
                         </th>
                     </tr>
                  </tbody>
@@ -54,3 +54,31 @@
         </div>
     </div>
 </div>
+<ng-template #updateEmployeeTemplate>
+    <form [formGroup]="updateEmployeeForm"  class="form-group  p-3 bg-light border border-dark text-center fw-bold">
+        <div class="form-group mt-2">
+            <label for="employee-name " class="form-label fs-7 border-dark">Empleado</label>
+            <input class="form-control border-dark" type="text" formControlName="employeeName" id="employee-name">
+            <div *ngIf="employeeName.invalid && (employeeName.dirty || employeeName.touched)" class="text-danger">
+            <div *ngIf="employeeName.errors?.['required']">
+            Falta el nombre
+            </div>
+           </div>
+        </div>
+        <div class="form-group">
+            <label for="employeeJob-id" class="form-label fs-7 mt-3">Categoria</label>
+        <select id="employeeJob-id"  formControlName="employeeJobId" class="form-select border-dark  mt-2">
+            <option value="">Seleccione un rol de trabajo</option>
+             <option class="form-control" *ngFor="let jobRole of employeeJobs" id="employeeJob-id" [value]="jobRole.id">
+          
+                {{jobRole.jobRole}}</option>
+                <div *ngIf="employeeJobId.invalid && (employeeJobId.dirty || employeeJobId.touched)" class="text-danger">
+                    <div *ngIf="employeeJobId.errors?.['required']">
+                  Falta rol de trabajo
+                    </div>
+                  </div>
+        </select>
+    </div>
+        <button type="submit" (click)="updateEmployee();create()" class="btn btn-success border border-dark mt-2 mb-2">Guardar</button>
+    </form>
+  </ng-template>

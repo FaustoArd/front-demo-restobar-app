@@ -18,15 +18,20 @@ import { EmployeeManagerComponent } from './components/pages/employee-manager/em
 import { EmployeeComponent } from './components/pages/employee/employee/employee.component';
 import { StatisticMainComponent } from './components/pages/statistic/statistic-main/statistic-main.component';
 import { StatsEmployeesComponent } from './components/pages/statistic/stats-employees/stats-employees.component';
+import { RegistrationComponent } from './authentication/registration/registration.component';
+import { TablesClosedComponent } from './components/pages/statistic/tables-closed/tables-closed.component';
+import { IngredientCategoryComponent } from './components/pages/category/ingredient-category/ingredient-category.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component:LoginComponent },
+  { path:'register',component:RegistrationComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path:'table-management', component:TableManagementComponent },
   { path:'working-day', component:WorkingDayComponent },
   { path:'category-view', component:CategoryViewComponent },
   { path:'category-new',component:CategoryNewComponent },
+  { path:'ingredient-category', component:IngredientCategoryComponent},
   { path: 'product-view', component:ProductViewComponent },
   { path:'product-new', component:ProductNewComponent },
   { path:'product-edit/:id', component:ProductEditComponent },
@@ -39,7 +44,8 @@ const routes: Routes = [
   { path:'employee-manager', component:EmployeeManagerComponent },
   { path:'employee-new', component:EmployeeComponent },
   { path:'statistic-main',component:StatisticMainComponent},
-  { path:'stats-employees/:id', component:StatsEmployeesComponent}
+  { path:'stats-employees/:id', component:StatsEmployeesComponent},
+  { path:'stats-tables/:id', component:TablesClosedComponent}
 
 ];
 

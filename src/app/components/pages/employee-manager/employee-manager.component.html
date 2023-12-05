@@ -42,8 +42,8 @@
                        <th scope="row" class="fw-bold">{{employeeJob.jobRole}}</th>
                         <th scope="row" class="fw-bold">{{employeeJob.employeeSalary | currency: '$': 'symbol'}}</th>
                          <th>
-                            <button class="btn btn-success btn-sm text-white  ">Editar</button>
-                            <button class="btn btn-danger btn-sm text-white ms-2">Eliminar</button>
+                            <button (click)="openDialogUpdateJobRole(employeeJob.id, updateJobRoleTemplate)" class="btn btn-success bg-transparent btn-sm text-dark  ">Editar</button>
+                            <button (click)="onDeleteEmployee(employeeJob.id)" class="btn btn-danger btn-sm bg-transparent text-dark ms-2">Eliminar</button>
                         </th>
                     </tr>
                  </tbody>
@@ -51,3 +51,30 @@
         </div>
     </div>
 </div>
+<ng-template #updateJobRoleTemplate>
+    <h1 class="h1 text-center text-white bg-success" mat-dialog-title>Modificar rol de trabajo</h1>
+    <div mat-dialog-content class="">
+        <form [formGroup]="updateEmployeeJobForm"  class="form-group p-3 bg-light border border-dark text-center fw-bold">
+            <div class="form-group mt-2">
+                <label for="job-role" class="form-label fs-7">Rol de trabajo</label>
+                <input class="form-control border-dark" type="text" formControlName="jobRole" id="job-role">
+                <div *ngIf="jobRole.invalid && (jobRole.dirty || jobRole.touched)" class="text-danger">
+                <div *ngIf="jobRole.errors?.['required']">
+                Falta el nombre...
+                </div>
+               </div>
+            </div>
+       <div class="form-group mt-2">
+                <label for="employee-salary" class="form-label fs-7  border-dark">Salario en pesos</label>
+                <input class="form-control border-dark " type="number" formControlName="employeeSalary" id="employee-salary">
+
+                <div *ngIf="employeeSalary.invalid && (employeeSalary.dirty || employeeSalary.touched)" class="text-danger">
+                    <div *ngIf="employeeSalary.errors?.['required']">
+                    Deben ser numeros
+                    </div>
+                   </div>
+            </div>
+            <button type="submit" (click)="onUpdateJobRole();onCreate()" class="btn btn-success border border-dark mt-2 mb-2">Guardar</button>
+        </form>
+    </div>
+  </ng-template>

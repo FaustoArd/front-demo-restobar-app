@@ -53,6 +53,10 @@ export class IngredientService {
     return this.http.put<IngredientDto>(`${INGREDIENT_BASE_URL}/`,ingredient,this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  deleteIngredientById(id:number):Observable<string>{
+    return this.http.delete<string>(`${INGREDIENT_BASE_URL}/${id}`,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
   
 
   

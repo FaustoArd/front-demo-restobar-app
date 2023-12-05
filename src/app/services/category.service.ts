@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { CategoryDto } from '../models/categoryDto';
+import { IngredientCategoryDto } from '../models/ingredientCategory';
 
 const CATEGORY_BASE_URL = 'http://localhost:8080/api/v1/arbam/categories';
 
@@ -33,6 +34,16 @@ export class CategoryService {
   }
   saveCategory(category:CategoryDto):Observable<CategoryDto>{
     return this.http.post<CategoryDto>(`${CATEGORY_BASE_URL}/`,category,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  getAllIngredientCategories():Observable<IngredientCategoryDto[]>{
+    return this.http.get<IngredientCategoryDto[]>(`${CATEGORY_BASE_URL}/all_ingredient`
+    ,this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  saveIngredientCategory(category:IngredientCategoryDto):Observable<IngredientCategoryDto>{
+    return this.http.post<IngredientCategoryDto>(`${CATEGORY_BASE_URL}/save_ingredient`,
+    category,this.httpOptions).pipe(catchError(this.handleError));
   }
 
 }

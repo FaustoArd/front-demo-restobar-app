@@ -54,16 +54,16 @@ private loginData!:LoginDto;
         
             this.snackBar.open(this.authError,'Cerrar',{
               duration:3000,
-              verticalPosition: 'top',
+              verticalPosition: 'bottom',
               horizontalPosition: 'center'
               });
           
         },
         complete:()=>{
           if(this.loginData.jwtToken!=null){
-          this.snackBar.open('Login exitoso!','Cerrar',{
+          this.snackBar.open('Hola!','Cerrar',{
             duration:3000,
-            verticalPosition: 'top',
+            verticalPosition: 'bottom',
             horizontalPosition: 'center'
             });
             this.router.navigateByUrl('/home');
@@ -71,7 +71,7 @@ private loginData!:LoginDto;
           }else{
             this.snackBar.open('Nombre de usuario o contraseña incorrecto!','Cerrar',{
               duration:3000,
-              verticalPosition: 'top',
+              verticalPosition: 'bottom',
               horizontalPosition: 'center'
               });
           }

@@ -9,7 +9,7 @@
                         <th scope="col">Fecha</th>
                        <th scope="col">Total inicio de caja</th>
                        <th scope="col">Total Jornada + Caja</th>
-                       <th scope="col">Total Con descuento Pago Empleados</th>
+                       <th scope="col">Total + Caja - Empleados</th>
                         <th scope="col">Total efectivo</th>
                         <th scope="col">Total Transferencia</th>
                         <th scope="col">Total Debito</th>
@@ -24,18 +24,20 @@
                 <tbody>
                     <tr *ngFor="let workingDay of workingDays">
                        <td scope="row" class="fw-bold">{{workingDay.date}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalStartCash}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalWorkingDay}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalWorkingDayWithDiscount}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalCash}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalTransf}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalDebit}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalCredit}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalMP}}</td>
-                     <td scope="row" class="fw-bold">{{workingDay.totalEmployeeSalary}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalStartCash | currency:'$':'symbol'}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalWorkingDay | currency:'$':'symbol'}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalWorkingDayWithDiscount | currency:'$':'symbol'}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalCash | currency:'$':'symbol'}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalTransf | currency:'$':'symbol'}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalDebit | currency:'$':'symbol'}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalCredit | currency:'$':'symbol'}}</td>
+                       <td scope="row" class="fw-bold">{{workingDay.totalMP | currency:'$':'symbol'}}</td>
+                     <td scope="row" class="fw-bold">{{workingDay.totalEmployeeSalary | currency:'$':'symbol'}}</td>
                         <td>
                             <button (click)="getEmployeesByWorkingDayId(workingDay.id)" class="btn btn-success btn-sm text-white ms-4 ">Empleados</button>
-                            <button class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
+                            <button routerLink="/stats-tables/{{workingDay.id}}" class="btn btn-success btn-sm text-white ms-4 ">Mesas</button>
+                            <button (click)="getExcelFile(workingDay.id)" class="btn btn-danger btn-sm text-white  ms-4 mt-2">Exportar</button>
+                            <button (click)="onDeleteWorkingDay(workingDay.id)" class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
                         </td>
                     </tr>
                  </tbody>
@@ -61,7 +63,7 @@
                     <tr *ngFor="let employee of employees">
                        <td scope="row" class="fw-bold">{{employee.employeeName}}</td>
                        <td scope="row" class="fw-bold">{{employee.employeeJob}}</td>
-                       <td scope="row" class="fw-bold">{{employee.employeeSalary}}</td>
+                       <td scope="row" class="fw-bold">{{employee.employeeSalary | currency:'$':'symbol'}}</td>
                      </tr>
                  </tbody>
             </table>

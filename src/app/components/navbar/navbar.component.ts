@@ -39,11 +39,16 @@ export class NavbarComponent implements OnInit {
      
   })
   }
+  onLogout():void{
+    this.storageService.deleteToken();
+    this.onSnackBarMessage("Hasta luego!");
+    this.router.navigateByUrl("/login")
+  }
 
   onSnackBarMessage(message: any) {
     this.snackBar.open(message, 'Cerrar', {
       duration: 3000,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       horizontalPosition: 'center'
     });
   }

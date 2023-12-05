@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="container-flex">
+    <div class="row mt-5">
+        <div class="col mx-4">
+            <button routerLink="/statistic-main" class="btn btn-dark opacity-75 bg-success text-white fw-bold">Volver</button>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-md-8">
+    <table class="table table-sm table-hover table-bordered table-striped border border-dark">
+        <thead>
+            <tr class="bg-primary opacity-50 text-center">
+                <th scope="col">Numero de mesa</th>
+               <th scope="col">Mesera</th>
+                <th scope="col">Total</th>
+                <th scope="col">Metodo de pago</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let tableClosed of tablesClosed">
+               <th scope="row" class="fw-bold">{{tableClosed.tableNumber}}</th>
+                <th scope="row" class="fw-bold">{{tableClosed.employeeName}}</th>
+                <th scope="row" class="fw-bold">{{tableClosed.totalPrice | currency: '$': 'symbol'}}</th>
+                <th scope="row" class="fw-bold">{{tableClosed.paymentMethod}}</th>
+               
+            </tr>
+         </tbody>
+    </table>
+</div>
+<div class="col"></div>
+</div>
+</div>

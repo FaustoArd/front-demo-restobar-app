@@ -1,21 +1,23 @@
 <app-navbar></app-navbar>
 
 <div class="container-fluid mt-4">
-  <a id="new" routerLink="/book-dialog"  class="btn btn-dark btn-md opacity-75 text-white">Nuevo</a>
-    <div class="row">
-      <div class="col-md-2" *ngFor="let ingredients of ingredients">
+  <div *ngIf="ingredients.length==0">
+    <h1  id="new" class="h1 fw-bold text-center mt-5">No hay ingredientes creados</h1>
+  </div>
+  <div class="row">
+      <div class="col-md-2" *ngFor="let ingredient of ingredients">
         <div class="card mt-3" >
          <div class="p list-group text-dark fw-bold">
-            <p class="card-text fs-5 text-center text-success fst-italic mt-2">{{ingredients.ingredientName}} </p>
-            <p class="card-text fs-7 text-center mt-4">Categoria: {{ingredients.categoryName}}</p>
+            <p class="card-text fs-5 text-center text-success fst-italic mt-2">{{ingredient.ingredientName}} </p>
+            <p class="card-text fs-7 text-center mt-4">Categoria: {{ingredient.categoryName}}</p>
             <div  class="d-inline card-text text-center fs-7">Stock:</div>
-            <div *ngIf="ingredients.ingredientAmount>=500" class="d-inline card-text text-center text-success fs-6 mb-1">{{ingredients.ingredientAmount}} gr</div>
-            <div *ngIf="ingredients.ingredientAmount<500" class="d-inline card-text text-center text-danger fs-6 mb-1">{{ingredients.ingredientAmount}} gr</div>
-            <div *ngIf="ingredients.ingredientAmount==null" class="d-inline card-text text-center text-danger fs-6 mb-2 mt-0">Sin stock</div>
+            <div *ngIf="ingredient.ingredientAmount>=500" class="d-inline card-text text-center text-success fs-6 mb-1">{{ingredient.ingredientAmount}} gr</div>
+            <div *ngIf="ingredient.ingredientAmount<500" class="d-inline card-text text-center text-danger fs-6 mb-1">{{ingredient.ingredientAmount}} gr</div>
+            <div *ngIf="ingredient.ingredientAmount==null" class="d-inline card-text text-center text-danger fs-6 mb-2 mt-0">Sin stock</div>
           
            
-            <a id="modify"  routerLink="/ingredient-modify/{{ingredients.id}}"  class="btn  btn-sm bg-dark opacity-75 text-white">Modificar</a>
-            <a id="delete" routerLink="/"  class="btn btn-sm btn-danger btn-md opacity-75 text-white mt-1">Eliminar</a>
+            <a id="modify"  routerLink="/ingredient-modify/{{ingredient.id}}"  class="btn  btn-sm bg-dark opacity-75 text-white">Modificar</a>
+            <a id="delete" (click)="onDeleteIngredient(ingredient.id)"  class="btn btn-sm btn-danger btn-md opacity-75 text-white mt-1">Eliminar</a>
           </div>
         </div>
       </div>

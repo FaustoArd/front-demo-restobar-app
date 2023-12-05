@@ -23,7 +23,7 @@ export class AuthenticationService {
       return throwError(() => Error('Error en el servidor, intente nuevamente en unos segundos'));
     } else if (error.status === 401) {
       console.error('Error', error.status);
-      return throwError(() => Error('Usuario o contraseña incorrecto'));
+      return throwError(() => Error(error.error));
     } else if (error.status === 417) {
       console.error('Error', error.status);
       return throwError(() => new Error('Direccion de email invalida'));
@@ -34,9 +34,7 @@ export class AuthenticationService {
    }
 
   registerUser(reg: RegistrationDto): Observable<RegistrationDto> {
-    return this.http.post<RegistrationDto>(`${AUTH_BASE_URL}/register`, reg, this.httpOptions).pipe(tap(() =>{
-
-    }), catchError(this.handleError));
+    return this.http.post<RegistrationDto>(`${AUTH_BASE_URL}/register`, reg, this.httpOptions).pipe(catchError(this.handleError));
   }
 
   loginUser(login: LoginDto): Observable<LoginDto> {

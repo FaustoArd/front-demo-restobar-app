@@ -39,6 +39,10 @@ import { EmployeeManagerComponent } from './components/pages/employee-manager/em
 import { EmployeeComponent } from './components/pages/employee/employee/employee.component';
 import { StatisticMainComponent } from './components/pages/statistic/statistic-main/statistic-main.component';
 import { StatsEmployeesComponent } from './components/pages/statistic/stats-employees/stats-employees.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { IngredientCategoryNewComponent } from './components/pages/ingredient-category/ingredient-category-new/ingredient-category-new.component';
+import { TablesClosedComponent } from './components/pages/statistic/tables-closed/tables-closed.component';
+import { IngredientCategoryComponent } from './components/pages/category/ingredient-category/ingredient-category.component';
 
 
 
@@ -69,6 +73,10 @@ import { StatsEmployeesComponent } from './components/pages/statistic/stats-empl
     EmployeeComponent,
     StatisticMainComponent,
     StatsEmployeesComponent,
+    ConfirmDialogComponent,
+    IngredientCategoryNewComponent,
+    TablesClosedComponent,
+    IngredientCategoryComponent,
     
     
   ],

@@ -178,7 +178,7 @@ deleteIngredientFromMix(id:number,productId:number):void{
 onSnackBarMessage(message:any){
   this.snackBar.open(message, 'Cerrar', {
        duration: 2500,
-       verticalPosition: 'top',
+       verticalPosition: 'bottom',
        horizontalPosition: 'center',
        
      });

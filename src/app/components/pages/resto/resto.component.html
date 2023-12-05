@@ -19,7 +19,7 @@
           <p class="card-text text-center fs-6 text-success fw-bold" *ngIf="restoTable.open">Abierta</p>
           <p id="empName" class="card- fs-6 text-center fw-bold" *ngIf="restoTable.open">{{restoTable.employeeName}}</p>
           <p class="card-text text-center fs-7" *ngIf="!restoTable.open">Cerrada</p>
-          <p id="price" class="card-text text-center text-danger fw-bold fs-6" *ngIf="restoTable.open">Total:
+          <p id="price" class="card-text text-center text-danger fw-bold fs-6" *ngIf="restoTable.open">
             {{restoTable.totalTablePrice | currency:'$':'symbol' }}</p>
           <a class="btn btn-dark btn-sm opacity-75 text-white border border-dark"
             (click)="saveTableIdForTableCreation(restoTable.id);openDialogRestoTableCreation(rTableCreationTemplate)"

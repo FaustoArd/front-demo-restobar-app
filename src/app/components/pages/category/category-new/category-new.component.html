@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container-flex">
     <div class="row">
-        <div class="col"></div>
+        <div class="col-md-3"></div>
         <div class="col-md-2 mt-5">
             <form class="form-group border p-3 bg-lightborder-dark text-center" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
                <div class="form-group"></div>
@@ -17,6 +17,38 @@
                 <button type="submit" class="btn  btn-sm btn-success mt-2">Guardar</button>
             </form>
         </div>
-        <div class="col"></div>
+        <div class="col-md-4 mt-5">
+           
+            <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
+                <thead>
+                    <tr class="bg-primary opacity-50 text-center">
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" *ngFor="let category of categories">
+                       <th scope="row" class="fw-bold">{{category.categoryName}}</th>
+                       <th> <button (click)="openDialogUpdateCategory(category.id,updateCategoryTemplate)" class="btn btn-success bg-transparent text-dark"></button> </th>
+                     </tr>
+                 </tbody>
+            </table>
+        </div>
     </div>
 </div>
+<ng-template #updateCategoryTemplate>
+    <form [formGroup]="updateCategoryForm"  class="form-group  p-3 bg-light border border-dark text-center fw-bold">
+        <div class="form-group mt-2">
+            <label for="category-name" class="form-label fs-7 border-dark">Categoria</label>
+            <input class="form-control border-dark" type="text" formControlName="categoryName" id="category-name">
+            <div *ngIf="categoryName.invalid && (categoryName.dirty || categoryName.touched)" class="text-danger">
+            <div *ngIf="categoryName.errors?.['required']">
+            Falta el nombre
+            </div>
+           </div>
+        </div>
+       
+        <button type="submit" (click)="onUpdateCategory();onCreate()" class="btn btn-success border border-dark mt-2 mb-2">Guardar</button>
+    </form>
+  </ng-template>
+

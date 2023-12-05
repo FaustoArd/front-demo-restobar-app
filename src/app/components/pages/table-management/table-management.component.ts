@@ -13,6 +13,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormArray, FormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { PaymentMethodDto } from 'src/app/models/PaymentMethodDto';
+import { ConfirmDialogService } from 'src/app/services/confirm-dialog.service';
 
 @Component({
   selector: 'app-table-management',
@@ -34,6 +35,7 @@ export class TableManagementComponent implements OnInit {
   private addedOrderData:any;
   private categoryId!:number;
   private  tableClosedData!:any;
+  confirmData!:boolean;
  
   paymentMethods:PaymentMethodDto[] = [];
   
@@ -41,7 +43,8 @@ export class TableManagementComponent implements OnInit {
 
   constructor(private restoTableService: RestoTableService, private productService: ProductService,
     private storageService: StorageService, private orderService: OrderService,
-    private router: Router, private snackBar: MatSnackBar, private categoryService:CategoryService,private formBuilder:FormBuilder) { }
+    private router: Router, private snackBar: MatSnackBar, private categoryService:CategoryService,
+    private formBuilder:FormBuilder,private confirmationService:ConfirmDialogService) { }
 
   ngOnInit(): void {
     this.getRestoTableById(Number(this.storageService.getTableIdAfterTableSelection()))
@@ -97,6 +100,21 @@ paymentMethodForm = this.formBuilder.group({
 
 get paymentMethod(){
   return this.paymentMethodForm.controls.paymentMethod;
+}
+
+confirmCloseTable():void{
+  var confirmText = "Seguro que desea cerrar la mesa?";
+  this.confirmationService.confirmDialog(confirmText).subscribe({
+    next:(confirmData)=>{
+    this.confirmData = confirmData;
+    if(this.confirmData){
+      this.onCloseTable();
+    }else{
+      this.onSnackBarMessage("Cancelado!");
+    }
+  }
+  });
+
 }
 
 
@@ -166,7 +184,7 @@ onCloseTable() {
   onSnackBarMessage(message:any){
    this.snackBar.open(message, 'Cerrar', {
         duration: 3000,
-        verticalPosition: 'top',
+        verticalPosition: 'bottom',
         horizontalPosition: 'center',
         
       });
