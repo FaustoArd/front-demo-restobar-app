@@ -53,7 +53,7 @@ onProductUnselect():void{
   this.storageService.deleteCurrentSelectedProductStatus();
   this.storageService.deleteCurrentSelectedProductId();
   this.productSelected = false;
-  this.productSelectionId = NaN ;
+  this.productSelectionId = 0 ;
   this.productSelectedName = "";
   this.ingredientMixes.length = 0;
  this.router.navigateByUrl("ingredient-mix");
@@ -115,7 +115,7 @@ getallIngredientMixesByProductId(productId:number){
       this.storageService.setCurrentSelectedProductStatus("true");
       this.storageService.setCurrentSelectedProductId(String(productId));
       this.productSelected = true;
-     this.productSelectionId = productId;
+    // this.productSelectionId = productId;
     this.productService.getProductById(productId).subscribe({
       next:(productData)=>{
         this.productSelectedName = productData.productName;

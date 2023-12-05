@@ -14,7 +14,7 @@
     <div class="col-md-2" *ngFor="let restoTable of restoTables">
       <div id="tableCard" class="card mt-2 mb-5 border border-dark">
         <div class="p list-group flush bg-light border border-dark">
-          <p class="card-text fs-6 text-center fst-italic fw-bold" *ngIf="restoTable.open">N° {{restoTable.tableNumber}}
+          <p class="card-text fs-4 text-center fst-italic fw-bold mt-1" *ngIf="restoTable.open">{{restoTable.tableNumber}}
           </p>
           <p class="card-text text-center fs-6 text-success fw-bold" *ngIf="restoTable.open">Abierta</p>
           <p id="empName" class="card- fs-6 text-center fw-bold" *ngIf="restoTable.open">{{restoTable.employeeName}}</p>
@@ -35,7 +35,7 @@
 <ng-template #rTableCreationTemplate>
   <h1 class="h1 text-center text-white bg-success" mat-dialog-title>Abrir mesa</h1>
   <div mat-dialog-content class="">
-    <form class="form-group p-3 bg-light border border-dark text-center fw-bold" [formGroup]="createRestoTableForm"
+    <form class="form-group p-3 bg-light border border-dark text-center fw-bold" [formGroup]="openRestoTableForm"
       (ngSubmit)="onOpenTableSubmit()">
       <div>
         <mat-form-field class="d-block bg-light">
@@ -51,7 +51,7 @@
       <div>
         <mat-form-field class=" bg-light ">
           <mat-label class="form-label fs-7 border-primary">Atendida por</mat-label>
-          <mat-select class="border-primary" [formGroup]="createRestoTableForm" required formControlName="employeeId"
+          <mat-select class="border-primary" [formGroup]="openRestoTableForm" required formControlName="employeeId"
             id="employeeId">
             <mat-option>--</mat-option>
             <mat-option *ngFor="let employee of employees" [value]="employee.id">
@@ -63,7 +63,7 @@
               </div>
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="createRestoTableForm.hasError('required')">Por favor seleccione el empleado que va a atender
+          <mat-error *ngIf="openRestoTableForm.hasError('required')">Por favor seleccione el empleado que va a atender
             la mesa</mat-error>
         </mat-form-field>
       </div>

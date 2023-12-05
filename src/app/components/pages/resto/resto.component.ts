@@ -25,6 +25,7 @@ export class RestoComponent implements OnInit {
   restoTable!: RestoTableDto;
   employees: EmployeeDto[] = [];
   restoCreationDto!: RestoTableCreateDto;
+  tableData!:RestoTableCreateDto;
 
  // workinDayDto!: WorkingDayDto;
  isDayStarted!:boolean;
@@ -55,45 +56,47 @@ export class RestoComponent implements OnInit {
       template
     })
     this.matDialogRef.afterClosed().subscribe(res => { console.log('Update Job Role template close', res) })
-    this.createRestoTableForm.reset();
+    this.openRestoTableForm.reset();
   }
   }
 
   onCreate() {
-    this.createRestoTableForm.reset();
+    this.openRestoTableForm.reset();
     this.matDialogRef.close();
   }
 
-  createRestoTableForm = this.formBuilder.group({
+  openRestoTableForm = this.formBuilder.group({
     employeeId: [0],
     tableNumber: [0, Validators.required],
     id: [0]
   });
   get id() {
-    return this.createRestoTableForm.controls.id;
+    return this.openRestoTableForm.controls.id;
   }
   get employeeId() {
-    return this.createRestoTableForm.controls.employeeId;
+    return this.openRestoTableForm.controls.employeeId;
   }
   get tableNumber() {
-    return this.createRestoTableForm.controls.tableNumber;
+    return this.openRestoTableForm.controls.tableNumber;
   }
   onOpenTableSubmit(): void {
-    this.createRestoTableForm.get('id')?.setValue(Number(this.storageService.getTableIdForTableCreation()))
-    console.log(this.createRestoTableForm.value)
-    if (this.createRestoTableForm.valid) {
+    this.openRestoTableForm.get('id')?.setValue(Number(this.storageService.getTableIdForTableCreation()))
+    console.log(this.openRestoTableForm.value)
+    if (this.openRestoTableForm.valid) {
       restoDto: new RestoTableCreateDto();
     this.restoTableService.openNewTable(
-        this.createRestoTableForm.value as RestoTableCreateDto
+        this.openRestoTableForm.value as RestoTableCreateDto
       ).subscribe({
         next: (tableData) => {
+        
+        this.tableData = tableData;
           console.log(tableData)
         },
         error: (errorData) => {
           this.onSnackBarMessage(errorData);
         },
         complete: () => {
-          this.onSnackBarMessage('Mesa activa');
+          this.onSnackBarMessage('Mesa: ' + this.tableData.tableNumber + ' activa!');
           this.getAllTablesOrderByIdAsc();
           this.onCreate();
         }
@@ -148,7 +151,7 @@ export class RestoComponent implements OnInit {
 
   onSnackBarMessage(message: any) {
     this.snackBar.open(message, 'Cerrar', {
-      duration: 3000,
+      duration: 2500,
       verticalPosition: 'bottom',
       horizontalPosition: 'center'
     });

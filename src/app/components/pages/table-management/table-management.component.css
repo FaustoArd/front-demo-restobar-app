@@ -1,5 +1,16 @@
 
+th{
+    background-color: #cde1c4;
+}
+
+td{
+   
+    background-color: #c8cad4;
+}
+
 a{
+    width: 0.6rem;
+    height: 2.0rem;
     background-color: black;
     color: black;
 }

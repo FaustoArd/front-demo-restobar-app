@@ -95,7 +95,7 @@ getIngredientCategories():void{
 
   onSnackBarMessage(message:any){
     this.snackBar.open(message, 'Cerrar', {
-         duration: 3000,
+         duration: 2500,
          verticalPosition: 'top',
          horizontalPosition: 'center',
          
