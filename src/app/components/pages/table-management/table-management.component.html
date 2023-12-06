@@ -29,8 +29,8 @@
                     <tbody>
                         <tr *ngFor="let category of categories">
                             <td class="fs-6 fw-bold text-center text-dark">{{category.categoryName}}</td>
-                            <td class="text-center"><a class="btn  mt-3"
-                                    (click)="getProductsByCategoryId(category.id)">--</a></td>
+                            <td class="text-center"><a class="btn  mt-2"
+                                    (click)="getProductsByCategoryId(category.id)"></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -41,7 +41,7 @@
                     <div class="row">
 
                         <div class="row">
-                            <table   class="table table-bordered table-striped table-light border border-dark">
+                            <table id="productTable"   class="table table-bordered table-striped table-light border border-dark">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col" class="diplay-7 text-center text-dark">Producto</th>
@@ -64,8 +64,8 @@
                                             <input class="fs-7 fw-bold text-success" type="number" name="quantity"
                                                 id="quantity" value="{{productQuantity}}" min="1" #productQuantity
                                                 placeholder="0">
-                                            <a class="btn mt-2 text-center"
-                                                (click)="createNewOrder(product.id,productQuantity.value)">--</a>
+                                            <a class="btn mt-1 text-center ms-2 "
+                                                (click)="createNewOrder(product.id,productQuantity.value)"></a>
                                         </td>
 
                                     </tr>
@@ -79,7 +79,7 @@
             </div>
             <div class="col">
                 <div class="container">
-                    <table id="table" class="table table-bordered table-striped table-light border border-dark">
+                    <table id="orderTable" class="table table-bordered table-striped table-light border border-dark">
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col" class="display-7 text-center text-dark">Producto</th>
@@ -95,7 +95,7 @@
                                 <td class=" fw-bold display-7 text-center text-dark">{{order.totalOrderPrice |
                                     currency:'$':'symbol'}}</td>
                                 <td class="display-7 text-center"><a class="btn"
-                                        (click)="deleteOrderById(order.id)">--</a></td>
+                                        (click)="deleteOrderById(order.id)"></a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -131,7 +131,7 @@
                       </div>
                     </div>
             </select>
-            <button type="submit" (click)="confirmCloseTable()" class="btn btn-lg btn-danger border border-dark mt-2 mb-2 text-center ms-3 mt-4">Cerrar</button>
+            <button id="btnClose" type="submit" (click)="confirmCloseTable()" class="btn">Cerrar</button>
         </div>
     </form>
         </div>
@@ -139,8 +139,8 @@
         <div class="col">
 
         </div>
-        <div class="col">
-            <button class="btn btn-white border fs-4 border-dark h3 text-danger ms-5">
+        <div class="col-md-2 float-end">
+            <button id="btnTotal" class="btn fs-3 border-dark  ms-5">
                 {{restoTable.totalTablePrice | currency:'$':'symbol'}}</button>
         </div>
     </div>

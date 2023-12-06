@@ -19,12 +19,22 @@ a:hover{
     background-color: red;
     color: red;
 }
+#quantity{
+    width: 4rem;
+}
 
 #btnClose{
+    width: 6rem;
+    margin-top: 1rem;
+    margin-left: 2.2rem;
    /* background-color: rgb(203, 77, 27);*/
     background: linear-gradient(245.59deg, red 0%, rgb(233, 83, 8) 28.53%, #d35d0e 75.52%);
     color: white;
    
+}
+#btnClose:hover{
+    background: linear-gradient(245.59deg, rgb(0, 255, 98) 0%, rgb(60, 233, 8) 28.53%, #0ed30e 75.52%);
+    color: rgb(9, 2, 2);
 }
 
 
@@ -42,14 +52,33 @@ a:hover{
     margin: 5px;
     padding: 10px 15px 5px;
     border: solid 1px black;
-
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     height: 300px;
     width: 400px;
     overflow: scroll;
     outline: 1px solid red;
 }
+#productTable{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#orderTable{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   
+}
 
 select{
   width: 170px;
   border-radius: 0.7rem;
+}
+
+#btnTotal{
+   
+    color: red;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+#btnTotal:hover{
+    color: rgb(38, 0, 255);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

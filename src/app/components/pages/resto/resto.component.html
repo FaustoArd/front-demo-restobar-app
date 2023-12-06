@@ -21,11 +21,11 @@
           <p class="card-text text-center fs-7" *ngIf="!restoTable.open">Cerrada</p>
           <p id="price" class="card-text text-center text-danger fw-bold fs-6" *ngIf="restoTable.open">
             {{restoTable.totalTablePrice | currency:'$':'symbol' }}</p>
-          <a class="btn btn-dark btn-sm opacity-75 text-white border border-dark"
+          <a id="btnOpen" class="btn  btn-sm  border border-dark"
             (click)="saveTableIdForTableCreation(restoTable.id);openDialogRestoTableCreation(rTableCreationTemplate)"
             *ngIf="!restoTable.open">Abrir</a>
           <a id="manage" routerLink="/table-management" (click)="saveTableIdForOrder(restoTable.id)"
-            class="btn btn-success btn-sm opacity-75 text-white" *ngIf="restoTable.open">Administrar</a>
+            class="btn  btn-sm " *ngIf="restoTable.open">Administrar</a>
           <!-- <a id="open" class="btn btn-danger btn-sm opacity-75 text-white" *ngIf="restoTable.open">Cerrar</a> -->
         </div>
       </div>

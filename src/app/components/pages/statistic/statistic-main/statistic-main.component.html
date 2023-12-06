@@ -26,7 +26,8 @@
                        <td scope="row" class="fw-bold">{{workingDay.date}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalStartCash | currency:'$':'symbol'}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalWorkingDay | currency:'$':'symbol'}}</td>
-                       <td scope="row" class="fw-bold">{{workingDay.totalWorkingDayWithDiscount | currency:'$':'symbol'}}</td>
+                       <td scope="row"  *ngIf="workingDay.totalWorkingDayWithDiscount>0" class="fw-bold">{{workingDay.totalWorkingDayWithDiscount | currency:'$':'symbol'}}</td>
+                       <td scope="row" *ngIf="workingDay.totalWorkingDayWithDiscount<0" class="fw-bold text-danger">{{workingDay.totalWorkingDayWithDiscount | currency:'$':'symbol'}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalCash | currency:'$':'symbol'}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalTransf | currency:'$':'symbol'}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalDebit | currency:'$':'symbol'}}</td>
@@ -35,8 +36,7 @@
                      <td scope="row" class="fw-bold">{{workingDay.totalEmployeeSalary | currency:'$':'symbol'}}</td>
                         <td>
                             <button (click)="getEmployeesByWorkingDayId(workingDay.id)" class="btn btn-success btn-sm text-white ms-4 ">Empleados</button>
-                            <button routerLink="/stats-tables/{{workingDay.id}}" class="btn btn-success btn-sm text-white ms-4 ">Mesas</button>
-                            <button (click)="getExcelFile(workingDay.id)" class="btn btn-danger btn-sm text-white  ms-4 mt-2">Exportar</button>
+                            <button routerLink="/stats-tables/{{workingDay.id}}" class="btn btn-success btn-sm text-white ms-2 ">Mesas</button>
                             <button (click)="onDeleteWorkingDay(workingDay.id)" class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
                         </td>
                     </tr>

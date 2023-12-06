@@ -8,4 +8,23 @@ form{
     color: rgb(20, 2, 5);
 }
 
+#btnOpen{
+    background-color: black;
+    color: white;
+}
+#btnOpen:hover{
+    background-color: rgb(52, 234, 11);
+    color: black;
+}
+
+#manage{
+    background-color: rgb(167, 202, 53);
+    
+    color: black;
+}
+#manage:hover{
+    background-color: rgb(63, 53, 202);
+    color: white;
+}
+
 

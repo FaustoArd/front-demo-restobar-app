@@ -1,0 +1,31 @@
+#btnUpdate{
+    margin-left: 10rem;
+    background-color: blue;
+    color: white;
+}
+
+#btnUpdate:hover{
+    
+    background-color: rgb(149, 0, 255);
+    
+}
+
+#btnEnd{
+background-color: rgb(255, 98, 0);
+color:white
+}
+
+#btnEnd:hover{
+    background-color: rgb(255, 0, 0);
+    
+}
+
+#btnSelection{
+    height: 1.5rem;
+    width: 2rem;
+    background-color: rgb(21, 68, 26);
+color:white
+}
+#btnSelection:hover{
+    background-color: rgb(210, 14, 14);
+}
