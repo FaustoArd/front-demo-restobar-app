@@ -114,7 +114,7 @@ export class EmployeeManagerComponent implements OnInit {
       //this.updateEmployeeJob = new EmployeeJobDto();
       this.updateEmployeeJob = Object.assign(this.updateEmployeeJob, this.updateEmployeeJobForm.value);
 
-      this.employeeService.createJobRole(this.updateEmployeeJob).subscribe({
+      this.employeeService.updateJobRole(this.updateEmployeeJob).subscribe({
         next: (jobData) => {
           this.onSnackBarMessage(jobData)
         },

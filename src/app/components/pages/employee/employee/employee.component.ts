@@ -112,7 +112,7 @@ empData!:string;
   updateEmployee():void{
     if(this.updateEmployeeForm.valid){
       this.updatedEmployee = Object.assign(this.updatedEmployee,this.updateEmployeeForm.value);
-      this.employeeService.createEmployee(this.updatedEmployee).subscribe({
+      this.employeeService.updateEmployee(this.updatedEmployee).subscribe({
         next:(empData)=>{
           this.onSnackBarMessage(empData);
         },

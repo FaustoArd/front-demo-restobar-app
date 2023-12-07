@@ -49,6 +49,9 @@ getEmployeeById(id:number):Observable<EmployeeDto>{
   createEmployee(employee:EmployeeDto):Observable<string>{
     return this.http.post<string>(`${EMPLOYEE_BASE_URL}/new_employee`,employee,this.httpOptions).pipe(catchError(this.handleError));
   }
+  updateEmployee(employee:EmployeeDto):Observable<string>{
+    return this.http.put<string>(`${EMPLOYEE_BASE_URL}/update_employee`,employee,this.httpOptions).pipe(catchError(this.handleError));
+  }
 
   deleteEmployeeById(id:number):Observable<string>{
     return this.http.delete<string>(`${EMPLOYEE_BASE_URL}/employee/${id}`,this.httpOptions).pipe(catchError(this.handleError));
@@ -66,6 +69,10 @@ getEmployeeById(id:number):Observable<EmployeeDto>{
   }
   createJobRole(jobRole:EmployeeJobDto):Observable<EmployeeJobDto>{
     return this.http.post<EmployeeJobDto>(`${EMPLOYEE_BASE_URL}/new_job_role`,jobRole,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+  updateJobRole(jobRole:EmployeeJobDto):Observable<EmployeeJobDto>{
+    return this.http.put<EmployeeJobDto>(`${EMPLOYEE_BASE_URL}/update_job_role`,jobRole,this.httpOptions)
     .pipe(catchError(this.handleError));
   }
 
