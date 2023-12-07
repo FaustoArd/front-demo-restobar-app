@@ -35,8 +35,8 @@
                        <td scope="row" class="fw-bold">{{workingDay.totalMP | currency:'$':'symbol'}}</td>
                      <td scope="row" class="fw-bold">{{workingDay.totalEmployeeSalary | currency:'$':'symbol'}}</td>
                         <td>
-                            <button id="btnE" (click)="getEmployeesByWorkingDayId(workingDay.id)" class="btn  btn-sm  ms-4 ">E</button>
-                            <button id="btnM" routerLink="/stats-tables/{{workingDay.id}}" class="btn  btn-sm  ms-2 ">M</button>
+                          
+                            <button id="btnM" routerLink="/stats-tables/{{workingDay.id}}" class="btn  btn-sm  ms-2 ">Info</button>
                             <button id="btnDel" (click)="onDeleteWorkingDay(workingDay.id)" class="btn  btn-sm   ms-2">Del</button>
                         </td>
                     </tr>
@@ -44,31 +44,7 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 mt-3">
-            <h2 class="h2 text-center">Empleados</h2>
-            <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
-                <thead>
-                    <tr class="bg-primary opacity-50">
-                        <th scope="col">Empleado</th>
-                        <th scope="col">Rol</th>
-                       <th scope="col">Salario</th>
-                   
-                     
-                       
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let employee of employees">
-                       <td scope="row" class="fw-bold">{{employee.employeeName}}</td>
-                       <td scope="row" class="fw-bold">{{employee.employeeJob}}</td>
-                       <td scope="row" class="fw-bold">{{employee.employeeSalary | currency:'$':'symbol'}}</td>
-                     </tr>
-                 </tbody>
-            </table>
-        </div>
-    </div>
+  
 
 </div>
 

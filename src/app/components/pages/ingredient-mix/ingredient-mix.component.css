@@ -10,6 +10,16 @@
     
 }
 
+#btnOnSelection{
+  
+    background-color: red;
+    color: white;
+}
+
+#btnOnSelection:hover{
+    background-color: blue;
+}
+
 #btnDel{
     height: 1.5rem;
     background-color: red;
@@ -18,4 +28,26 @@
 
 #btnDel:hover{
     background-color: blue;
+}
+#btnAssign{
+    margin-left: 4.5rem;
+    background-color: green;
+    opacity: 0.7;
+    color:white;
+}
+#btnAssign:hover{
+    background-color: rgb(0, 102, 128);
+    
+   
+}
+
+#btnView{
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+    background-color: rgb(183, 18, 15);
+    opacity: 0.7;
+    color: white;
+}
+#btnView:hover{
+    background-color: rgb(242, 0, 255);
 }

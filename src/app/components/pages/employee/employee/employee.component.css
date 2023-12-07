@@ -1,0 +1,22 @@
+#btnEdit{
+    margin-left: 4.5rem;
+    background-color: green;
+    opacity: 0.7;
+    color:white;
+}
+#btnEdit:hover{
+    background-color: rgb(0, 102, 128);
+    
+   
+}
+
+#btnDel{
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+    background-color: rgb(155, 48, 46);
+    opacity: 0.7;
+    color: white;
+}
+#btnDel:hover{
+    background-color: rgb(242, 0, 255);
+}

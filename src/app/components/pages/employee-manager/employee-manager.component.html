@@ -42,8 +42,8 @@
                        <th scope="row" class="fw-bold">{{employeeJob.jobRole}}</th>
                         <th scope="row" class="fw-bold">{{employeeJob.employeeSalary | currency: '$': 'symbol'}}</th>
                          <th>
-                            <button (click)="openDialogUpdateJobRole(employeeJob.id, updateJobRoleTemplate)" class="btn btn-success bg-transparent btn-sm text-dark  ">Editar</button>
-                            <button (click)="onDeleteEmployee(employeeJob.id)" class="btn btn-danger btn-sm bg-transparent text-dark ms-2">Eliminar</button>
+                            <button id="btnEdit" (click)="openDialogUpdateJobRole(employeeJob.id, updateJobRoleTemplate)" class="btn  btn-sm   ">Editar</button>
+                            <button id="btnDel" (click)="onDeleteEmployee(employeeJob.id)" class="btn  btn-sm  ms-2">Eliminar</button>
                         </th>
                     </tr>
                  </tbody>

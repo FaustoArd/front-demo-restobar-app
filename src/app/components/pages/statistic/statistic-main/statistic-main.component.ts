@@ -38,10 +38,7 @@ confirmData!:boolean;
     this.workingDayService.getallWorkingDayByDateAsc().subscribe(wd => this.workingDays =wd)
   }
 
-  getEmployeesByWorkingDayId(id:number){
-   
-    this.workingDayService.findCurrentEmployees(id).subscribe(emps => this.employees = emps);
-  }
+  
 
   getExcelFile(id:number):void{
     this.workingDayService.exportToExcel(id).subscribe({

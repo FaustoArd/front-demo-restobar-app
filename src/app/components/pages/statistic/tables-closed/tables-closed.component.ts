@@ -1,8 +1,10 @@
 import { Component,OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { EmployeeDto } from 'src/app/models/employeeDto';
 import { RestoTableClosedDto } from 'src/app/models/restoTableClosedDto';
 import { RestoTableClosedService } from 'src/app/services/resto-table-closed.service';
+import { WorkingDayService } from 'src/app/services/working-day.service';
 
 @Component({
   selector: 'app-tables-closed',
@@ -11,15 +13,17 @@ import { RestoTableClosedService } from 'src/app/services/resto-table-closed.ser
 })
 export class TablesClosedComponent implements OnInit {
 
+  employees:EmployeeDto[]= [];
   tablesClosed:RestoTableClosedDto[]=[];
   errorData!:string;
 
   constructor(private restoTableClosedService:RestoTableClosedService,private route:ActivatedRoute,
-    private snackBar:MatSnackBar){}
+    private snackBar:MatSnackBar,private workingDayService:WorkingDayService){}
 
 
     ngOnInit(): void {
         this.getTablesClosedByWorkingDayId();
+        this.getEmployeesByWorkingDayId();
     }
 
   getTablesClosedByWorkingDayId():void{
@@ -34,6 +38,11 @@ export class TablesClosedComponent implements OnInit {
 
       }
     })
+  }
+
+  getEmployeesByWorkingDayId(){
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.workingDayService.findCurrentEmployees(id).subscribe(emps => this.employees = emps);
   }
 
 

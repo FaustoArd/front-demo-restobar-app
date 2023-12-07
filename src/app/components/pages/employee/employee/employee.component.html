@@ -34,7 +34,7 @@
            
             <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
                 <thead>
-                    <tr class="bg-primary opacity-50">
+                    <tr class="bg-primary opacity-50 text-center">
                         <th scope="col">Nombre</th>
                        <th scope="col">Rol de trabajo</th>
                         <th scope="col">Opciones</th>
@@ -45,8 +45,8 @@
                        <th scope="row" class="fw-bold">{{employee.employeeName}}</th>
                         <th scope="row" class="fw-bold">{{employee.employeeJob}}</th>
                          <th>
-                            <button (click)="openDialogUpdateJobRole(employee.id,updateEmployeeTemplate)" class="btn btn-success btn-sm bg-transparent opacity-100 text-dark ms-4 ">Editar</button>
-                            <button (click)="deleteEmployee(employee.id)" class="btn btn-danger btn-sm bg-transparent opacity-100 text-dark  ms-4 ">Eliminar</button>
+                            <button id="btnEdit" (click)="openDialogUpdateJobRole(employee.id,updateEmployeeTemplate)" class="btn  btn-sm">Editar</button>
+                            <button id="btnDel" (click)="deleteEmployee(employee.id)" class="btn  btn-sm ">Eliminar</button>
                         </th>
                     </tr>
                  </tbody>

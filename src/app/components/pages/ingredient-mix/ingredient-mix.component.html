@@ -3,7 +3,7 @@
     <div  class="row row ">
         <div  class="col-md-4 text-center mt-0">
             <button *ngIf="!productSelected" class="btn btn-danger bg-transparent text-dark fw-bold mt-2" >Ningun producto seleccionado</button>
-            <button *ngIf="productSelected" class="btn btn-danger bg-danger text-white fw-bold mt-2"
+            <button id="btnOnSelection" *ngIf="productSelected" class="btn  fw-bold mt-2"
         (click)="onProductUnselect()">En seleccion: {{productSelectedName}}</button> 
         </div>
     </div>
@@ -25,9 +25,9 @@
                     <tr *ngFor="let product of products">
                        
                         <td class="fw-bold fs-6">{{product.productName}}</td>
-                <td *ngIf="!productSelected"><button  class="btn btn-success bg-danger text-dark fw-bold mx-2"
+                <td *ngIf="!productSelected"><button  id="btnAssign" class="btn fw-bold mx-2"
                      (click)="onProductSelect(product.id)">Asignar</button>
-                     <button  class="btn btn-success  bg-success opacity-75 text-white fw-bold "
+                     <button id="btnView"  class="btn  fw-bold "
                      (click)="viewProductMix(product.id)">Ver receta</button>
                     </td>
                    

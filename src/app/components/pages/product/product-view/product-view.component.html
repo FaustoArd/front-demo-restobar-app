@@ -9,7 +9,7 @@
             <p class="card-text fs-7 text-center mt-4">Categoria: {{product.categoryName}}</p>
             <div  class="d-inline card-text text-center fs-7">Stock:</div>
             <div *ngIf="product.productStock>5" class="d-inline card-text text-center text-success fs-6 mb-3">{{product.productStock}}</div>
-            <div *ngIf="product.productStock<=5" class="d-inline card-text text-center text-danger fs-6 mb-1">{{product.productStock}}</div>
+            <div *ngIf="product.productStock<=5" class="d-inline card-text text-center text-danger fs-6 mb-3">{{product.productStock}}</div>
             <div *ngIf="product.productStock==null" class="d-inline card-text text-center text-danger fs-6 mb-2 mt-0">Sin stock</div>
             <div class=" p-1 card-text text-center fs-7 mt-1">Receta:</div>
             <div *ngIf="!product.mixed"  class=" p-1 card-text text-center text-dark fs-7 mb-2 mt-0">No</div>

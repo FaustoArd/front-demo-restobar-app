@@ -30,4 +30,33 @@
 </div>
 <div class="col"></div>
 </div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8 mt-5">
+      
+        <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
+            <thead>
+                <tr class="bg-primary opacity-50">
+                    <th scope="col">Empleado</th>
+                    <th scope="col">Rol</th>
+                   <th scope="col">Salario</th>
+               
+                 
+                   
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                   <td scope="row" class="fw-bold">{{employee.employeeName}}</td>
+                   <td scope="row" class="fw-bold">{{employee.employeeJob}}</td>
+                   <td scope="row" class="fw-bold">{{employee.employeeSalary | currency:'$':'symbol'}}</td>
+                 </tr>
+             </tbody>
+        </table>
+    </div>
 </div>
+
+</div>
+
+
