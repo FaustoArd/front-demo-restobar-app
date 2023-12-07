@@ -32,7 +32,7 @@ export class CategoryNewComponent implements OnInit {
 
   categoryForm = new FormGroup({
     id: new FormControl(''),
-    categoryName: new FormControl('', Validators.required),
+    categoryName: new FormControl('',[Validators.required,Validators.maxLength(30)]),
   });
 
   get categoryName(){
@@ -56,7 +56,7 @@ export class CategoryNewComponent implements OnInit {
         }
       });
     }else{
-      this.onSnackBarMessage("Debes ingresar una categoria")
+      this.onSnackBarMessage("Categoria invalida")
       this.categoryForm.markAllAsTouched();
     }
   }
@@ -66,7 +66,7 @@ export class CategoryNewComponent implements OnInit {
 
 updateCategoryForm = this.formBuilder.group({
   id: [0],
-  categoryName:['',Validators.required]
+  categoryName:['',[Validators.required,Validators.maxLength(30)]]
 });
 
 onCreate(){
@@ -111,8 +111,11 @@ private matDialogRef!: MatDialogRef<DialogTemplateComponent>
         complete:()=>{
           this.onSnackBarMessage("Se Actualizo la categoria :" + this.catData.categoryName);
           this.getAllCategories();
+          this.onCreate();
         }
       })
+    }else{
+      this.onSnackBarMessage("Categoria invalida");
     }
    
   }

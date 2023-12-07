@@ -87,7 +87,7 @@
                        <td scope="row" class="fw-bold fs-5">{{ingredientMix.ingredientName}}</td>
                        <td scope="row" class="fw-bold fs-5">{{ingredientMix.ingredientAmount}} gr</td>
                         <td scope="row" class="fw-bold fs-5">
-                            <button (click)="deleteIngredientFromMix(ingredientMix.id,ingredientMix.productId)">-</button>
+                            <button class="btn btn-sm" id="btnDel" (click)="deleteIngredientFromMix(ingredientMix.id,ingredientMix.productId)"></button>
                         </td>
                        
                     </tr>

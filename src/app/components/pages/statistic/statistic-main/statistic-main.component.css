@@ -1,0 +1,28 @@
+#btnE{
+    background-color: rgb(24, 171, 24);
+    color:white
+}
+
+#btnE:hover{
+    background-color: rgb(128, 36, 0);
+}
+
+#btnM{
+    background-color: rgb(12, 17, 82);
+    color:white
+}
+
+#btnM:hover{
+    background-color: rgb(255, 242, 0);
+    color:white 
+}
+
+#btnDel{
+    background-color: rgb(255, 34, 0);
+    color:white
+}
+
+#btnDel:hover{
+    background-color: rgb(134, 121, 121);
+    color:white
+}

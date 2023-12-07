@@ -30,7 +30,7 @@ empData!:string;
 
   employeeForm = this.formbuilder.group({
     id:[0],
-    employeeName:['',Validators.required],
+    employeeName:['',[Validators.required, Validators.maxLength(30)]],
     employeeJobId:['', Validators.required],
    
   })
@@ -71,7 +71,7 @@ empData!:string;
 
   updateEmployeeForm = this.formbuilder.group({
     id:[0],
-    employeeName:['',Validators.required],
+    employeeName:['',[Validators.required, Validators.maxLength(30)]],
     employeeJob:[''],
     employeeJobId:[0, Validators.required],
   });

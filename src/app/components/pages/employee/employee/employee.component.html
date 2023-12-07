@@ -59,9 +59,12 @@
         <div class="form-group mt-2">
             <label for="employee-name " class="form-label fs-7 border-dark">Empleado</label>
             <input class="form-control border-dark" type="text" formControlName="employeeName" id="employee-name">
-            <div *ngIf="employeeName.invalid && (employeeName.dirty || employeeName.touched)" class="text-danger">
+            <div *ngIf="employeeName.invalid && (employeeName.dirty || employeeName.touched)" class="alert">
             <div *ngIf="employeeName.errors?.['required']">
             Falta el nombre
+            </div>
+            <div *ngIf="employeeName.errors?.['maxlength']">
+                La cantidad maxima de caracteres es 30
             </div>
            </div>
         </div>

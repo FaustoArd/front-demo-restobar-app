@@ -39,8 +39,8 @@ export class EmployeeManagerComponent implements OnInit {
   jobRoleBuilder = this.formBuilder.group({
 
     id: [0],
-    jobRole: ['', Validators.required],
-    employeeSalary: ['', Validators.required]
+    jobRole: ['', [Validators.required,Validators.maxLength(30)]],
+    employeeSalary: ['', [Validators.required,Validators.max(999999)]]
   });
 
   get jobRole() {
@@ -76,8 +76,8 @@ export class EmployeeManagerComponent implements OnInit {
   /**EmployeeJob update form */
   updateEmployeeJobForm = this.formBuilder.group({
     id: [0],
-    jobRole: ['', Validators.required],
-    employeeSalary: [0, Validators.required]
+    jobRole: ['', [Validators.required,Validators.maxLength(30)]],
+    employeeSalary: [0, [Validators.required,Validators.max(999999)]]
   });
 
   onUpdateJobRoleShow(): void {

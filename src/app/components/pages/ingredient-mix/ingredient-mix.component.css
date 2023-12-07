@@ -9,3 +9,13 @@
     height: 2.0rem;
     
 }
+
+#btnDel{
+    height: 1.5rem;
+    background-color: red;
+
+}
+
+#btnDel:hover{
+    background-color: blue;
+}

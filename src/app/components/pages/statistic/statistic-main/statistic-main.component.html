@@ -5,7 +5,7 @@
             <h2 class="h2 text-center">Jornadas</h2>
             <table class="table table-fluid table-hover table-bordered table-striped border border-dark">
                 <thead>
-                    <tr class="bg-primary opacity-50">
+                    <tr class="bg-primary opacity-50 text-center">
                         <th scope="col">Fecha</th>
                        <th scope="col">Total inicio de caja</th>
                        <th scope="col">Total Jornada + Caja</th>
@@ -26,7 +26,7 @@
                        <td scope="row" class="fw-bold">{{workingDay.date}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalStartCash | currency:'$':'symbol'}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalWorkingDay | currency:'$':'symbol'}}</td>
-                       <td scope="row"  *ngIf="workingDay.totalWorkingDayWithDiscount>0" class="fw-bold">{{workingDay.totalWorkingDayWithDiscount | currency:'$':'symbol'}}</td>
+                       <td scope="row"  *ngIf="workingDay.totalWorkingDayWithDiscount>=0" class="fw-bold">{{workingDay.totalWorkingDayWithDiscount | currency:'$':'symbol'}}</td>
                        <td scope="row" *ngIf="workingDay.totalWorkingDayWithDiscount<0" class="fw-bold text-danger">{{workingDay.totalWorkingDayWithDiscount | currency:'$':'symbol'}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalCash | currency:'$':'symbol'}}</td>
                        <td scope="row" class="fw-bold">{{workingDay.totalTransf | currency:'$':'symbol'}}</td>
@@ -35,9 +35,9 @@
                        <td scope="row" class="fw-bold">{{workingDay.totalMP | currency:'$':'symbol'}}</td>
                      <td scope="row" class="fw-bold">{{workingDay.totalEmployeeSalary | currency:'$':'symbol'}}</td>
                         <td>
-                            <button (click)="getEmployeesByWorkingDayId(workingDay.id)" class="btn btn-success btn-sm text-white ms-4 ">Empleados</button>
-                            <button routerLink="/stats-tables/{{workingDay.id}}" class="btn btn-success btn-sm text-white ms-2 ">Mesas</button>
-                            <button (click)="onDeleteWorkingDay(workingDay.id)" class="btn btn-danger btn-sm text-white  ms-4 mt-2">Eliminar</button>
+                            <button id="btnE" (click)="getEmployeesByWorkingDayId(workingDay.id)" class="btn  btn-sm  ms-4 ">E</button>
+                            <button id="btnM" routerLink="/stats-tables/{{workingDay.id}}" class="btn  btn-sm  ms-2 ">M</button>
+                            <button id="btnDel" (click)="onDeleteWorkingDay(workingDay.id)" class="btn  btn-sm   ms-2">Del</button>
                         </td>
                     </tr>
                  </tbody>
