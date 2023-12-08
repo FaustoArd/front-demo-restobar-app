@@ -70,6 +70,9 @@ get categoryId(){
     error:(errorData)=>{
       this.errorData = errorData;
       this.onSnackBarMessage(this.errorData)
+    },
+    complete:()=>{
+      this.getAllProductsByNameAsc();
     }
    })
 
